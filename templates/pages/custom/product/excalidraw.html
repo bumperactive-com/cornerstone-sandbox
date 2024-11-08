@@ -1,0 +1,27 @@
+---
+product:
+    videos:
+        limit: {{theme_settings.productpage_videos_count}}
+    reviews:
+        limit: {{theme_settings.productpage_reviews_count}}
+    related_products:
+        limit: {{theme_settings.productpage_related_products_count}}
+    similar_by_views:
+        limit: {{theme_settings.productpage_similar_by_views_count}}
+---
+
+{{inject 'injectedJSVarName1' entity_id}}
+{{inject 'injectedJSVarName2' urls.cart}}
+
+<!-- This is how you comment out Handlebars template code -->
+
+<!-- This is added above the 'partial page' so that it takes up the entire body -->
+<section id="excalidraw-root" class="overlay"></section>
+
+{{#partial "page"}}
+<!-- Content between header and footer -->
+<!-- Hide the excalidraw-root section to see it -->
+<div id="someElement" some-element-data-attribute>Hello, World!</div>
+{{/partial}}
+
+{{> layout/base}}

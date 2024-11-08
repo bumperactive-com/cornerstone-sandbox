@@ -18,7 +18,7 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.js$/,
+                test: /\.(js|jsx)$/,
                 include: /(assets\/js|assets\\js|stencil-utils)/,
                 use: {
                     loader: 'babel-loader',
@@ -34,6 +34,7 @@ module.exports = {
                                 useBuiltIns: 'entry',
                                 corejs: '^3.6.5',
                             }],
+                            ['@babel/preset-react']
                         ],
                     },
                 },
@@ -44,6 +45,10 @@ module.exports = {
                 options: {
                   exposes: ["$"],
                 },
+            },
+            {
+              test: /\.scss$/,
+              use: ['style-loader', 'css-loader', 'sass-loader'],
             },
         ],
     },
@@ -73,6 +78,10 @@ module.exports = {
             analyzerMode: 'static',
             openAnalyzer: false,
         }),
+        new webpack.DefinePlugin({
+          'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
+          'process.env.IS_PREACT': JSON.stringify(false),
+      }),
     ],
     resolve: {
         fallback:  { "url": require.resolve("url/") },
