@@ -13,6 +13,7 @@ module.exports = api => {
                 useBuiltIns: 'usage', // Tree-shake babel-polyfill
                 ...targets,
             }],
+            '@babel/preset-react',
         ],
     };
 }

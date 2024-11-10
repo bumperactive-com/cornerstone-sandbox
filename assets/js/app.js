@@ -52,7 +52,10 @@ const pageClasses = {
     wishlists: () => import('./theme/wishlist'),
 };
 
-const customClasses = {};
+const customClasses = {
+  'pages\\custom\\product\\excalidraw': () => import('./theme/custom/excalidraw-product'), // Windows
+  'pages/custom/product/excalidraw': () => import('./theme/custom/excalidraw-product'), // Mac/Linux
+};
 
 /**
  * This function gets added to the global window and then called
