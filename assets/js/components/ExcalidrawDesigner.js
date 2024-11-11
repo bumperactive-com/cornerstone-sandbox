@@ -1,6 +1,6 @@
 import React from 'react';
-import { Excalidraw, exportToCanvas } from '@excalidraw/excalidraw/dist/excalidraw.development.js';
-import ExcalidrawCanvasDisplay from '../ExcalidrawCanvasDisplay/ExcalidrawCanvasDisplay.jsx';
+import { Excalidraw, exportToCanvas } from '@excalidraw/excalidraw/dist/excalidraw.production.min.js';
+import ExcalidrawCanvasDisplay from './ExcalidrawCanvasDisplay.js';
 
 export default function ExcalidrawDesigner() {
   const [excalidrawAPI, setExcalidrawAPI] = React.useState(null);
