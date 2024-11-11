@@ -1,7 +1,7 @@
 import PageManager from '../page-manager.js';
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import ExcalidrawDesigner from '../../components/ExcalidrawDesigner/ExcalidrawDesigner.jsx';
+import ExcalidrawDesigner from '../../components/ExcalidrawDesigner.js';
 
 
 export default class ExcalidrawProduct extends PageManager {
