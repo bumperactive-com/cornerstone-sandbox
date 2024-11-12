@@ -55,6 +55,7 @@ const pageClasses = {
 const customClasses = {
   'pages\\custom\\product\\excalidraw': () => import('./theme/custom/excalidraw-product'), // Windows
   'pages/custom/product/excalidraw': () => import('./theme/custom/excalidraw-product'), // Mac/Linux
+  'pages\\custom\\product\\excalidraw-product-form': () => import('./theme/custom/excalidraw-form'),
 };
 
 /**
