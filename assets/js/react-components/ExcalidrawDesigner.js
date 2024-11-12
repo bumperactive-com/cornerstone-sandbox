@@ -1,11 +1,8 @@
 import React from 'react';
-import { Excalidraw, exportToCanvas } from '@excalidraw/excalidraw/dist/excalidraw.development.js';
-import ExcalidrawCanvasDisplay from '../ExcalidrawCanvasDisplay/ExcalidrawCanvasDisplay.jsx';
+import { Excalidraw, exportToCanvas } from '@excalidraw/excalidraw/dist/excalidraw.production.min.js';
 
-export default function ExcalidrawDesigner() {
+export default function ExcalidrawDesigner({ canvasDimensions }) {
   const [excalidrawAPI, setExcalidrawAPI] = React.useState(null);
-  const [canvasUrl, setCanvasUrl] = React.useState("");
-  const canvasDisplayDimensions = { width: 600, height: 200 };
 
   return (
     <>
@@ -13,30 +10,21 @@ export default function ExcalidrawDesigner() {
         <Excalidraw excalidrawAPI={(api) => setExcalidrawAPI(api)} />
       </div>
       
-      <a href="#excalidraw-preview" data-reveal-id="excalidraw-preview" onClick={() => handleButtonClick()} className="button button--primary">Preview design</a>
-
-      <div id="excalidraw-preview" className="modal" data-reveal>
-        <ExcalidrawCanvasDisplay canvasUrl={canvasUrl} />
-        <div className="button-wrapper">
-          <a className="button">Edit design</a>
-          <a href="/sample-unisex-tee-white"className="button button--primary">Continue</a>
-        </div>
-        
-      </div>
+      <a onClick={() => handleButtonClick()} className="button button--primary">Review design</a>
     </>
   )
-
 
   async function handleButtonClick() {
     // if Excalidraw API ready
     if (!excalidrawAPI) {
-      console.error('no excalidrawAPI found');
+      console.error('excalidrawAPI not found');
       return
     }
 
     // if user created design elements exist
     const excalidrawElements = excalidrawAPI.getSceneElements();
     if (!excalidrawElements || !excalidrawElements.length) {
+        // TODO: show message to user
         const errorMsg = 'No scene elements found. Create a design first.';
         console.error(errorMsg);
         return
@@ -46,13 +34,16 @@ export default function ExcalidrawDesigner() {
         elements: excalidrawAPI.getSceneElements(),
         appState: excalidrawAPI.getAppState(),
         files: excalidrawAPI.getFiles(),
-        getDimensions: () => canvasDisplayDimensions,
+        getDimensions: () => canvasDimensions,
         exportPadding: 0
     });
 
     const imgDataUrl = convertCanvasToDataUrl(canvas);
     saveToLocalStorage('excalidrawImg', imgDataUrl);
-    setCanvasUrl(imgDataUrl);
+
+    // Emit custom event with the img data URL
+    const designerReviewEvent = new CustomEvent('openDesignerReviewModal', { detail: imgDataUrl });
+    window.dispatchEvent(designerReviewEvent);
   }
 
   function saveToLocalStorage(key, data) {
