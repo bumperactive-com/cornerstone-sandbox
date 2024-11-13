@@ -48,8 +48,9 @@
 
     @include breakpoint("medium") {
         clear: right;
-        float: right;
+        float: none;
         width: grid-calc(6, $total-columns);
+        margin: auto;
     }
 
     .productView--quickView & {
