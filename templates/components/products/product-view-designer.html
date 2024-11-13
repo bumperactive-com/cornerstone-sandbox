@@ -1,6 +1,6 @@
 {{inject 'outOfStockDefaultMessage' (lang 'products.out_of_stock_default_message')}}
 
-<div class="productView productView--designer"
+<div id="productViewDesigner" class="productView"
     data-event-type="product"
     data-entity-id="{{product.id}}"
     data-name="{{product.title}}"
@@ -20,8 +20,6 @@
         {{lang 'common.login_for_pricing'}}
     {{/or}}"
     data-product-variant="single-product-option">
-
-
 
     <div>
         <p>Custom Multi-Step Product Form</p>
@@ -69,7 +67,6 @@
         </div>
     </div>
 
-
     {{#each product.reviews.messages}}
         {{#if error}}
             {{> components/common/alert/alert-error error}}
@@ -79,7 +76,6 @@
         {{/if}}
     {{/each}}
 
- 
 
     <section class="productView-details product-options">
         <div class="productView-options">
@@ -121,6 +117,13 @@
         {{> components/common/share url=product.url}}
     </section>
 
+    <article class="productView-description">
+        {{#if theme_settings.show_product_details_tabs}}
+            {{> components/products/description-tabs}}
+        {{else}}
+            {{> components/products/description}}
+        {{/if}}
+    </article>
 </div>
 
 <div id="previewModal" class="modal modal--large" data-reveal>
