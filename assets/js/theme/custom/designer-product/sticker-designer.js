@@ -8,12 +8,14 @@ import { api } from '@bigcommerce/stencil-utils';
 export default class StickerDesigner extends PageManager {
   constructor(context) {
     super(context)
-    this.$excalidrawContainer= $('#excalidraw-root')[0];
+    this.$excalidrawContainer = $('#excalidraw-designer');
+    this.$productViewDesigner = $('#productViewDesigner');
   }
 
   onReady() {
+    this.$productViewDesigner.hide();
     const canvasDimensions = this.parseDimensions(this.context.canvas_export_dimensions);
-    this.renderReactComponent(this.$excalidrawContainer, ExcalidrawDesigner, {canvasDimensions: canvasDimensions});
+    this.renderReactComponent(this.$excalidrawContainer[0], ExcalidrawDesigner, {canvasDimensions: canvasDimensions});
     this.modal = null;
     this.bindEvents();
   }
@@ -47,13 +49,12 @@ export default class StickerDesigner extends PageManager {
   bindExcalidrawDesignerEvents() {
     window.addEventListener('openDesignerReviewModal', (event) => {
       const excalidrawImgDataUrl = event.detail;
-      this.openDesignerReviewModal(excalidrawImgDataUrl);
+      this.openDesignerModal(excalidrawImgDataUrl);
     })
   }
 
-  openDesignerReviewModal(imgDataUrl) {
+  openDesignerModal(imgDataUrl) {
     this.modal = defaultModal();
-    
     
     // get modal template code
     api.getPage('/sticker-designer', {template: 'products/modals/designerReview'}, (err, content) => {
@@ -63,9 +64,28 @@ export default class StickerDesigner extends PageManager {
       
       this.modal.updateContent(content);
       $('.excalidraw-img').attr('src', imgDataUrl);
-    });
 
+      this.bindDesignerModalEvents();
+    });
     this.modal.open();
+  }
+
+  bindDesignerModalEvents() {
+    if (!this.modal) {
+      throw new Error("Unable to bind modal events. Missing modal object. ");
+    }
+
+    this.modal.$content.on('click', (event) => {
+      if ($(event.target).is('[data-designer-modal-edit]')) {
+        this.modal.close();
+      }
+
+      if ($(event.target).is('[data-designer-modal-continue]')) {
+        this.$excalidrawContainer.hide()
+        this.$productViewDesigner.show();
+        this.modal.close();
+      }
+    });
   }
 }
 
