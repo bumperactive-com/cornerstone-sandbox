@@ -51,7 +51,11 @@
                 <div data-product-option-change style="display:none;">
                     {{inject 'showSwatchNames' theme_settings.show_product_swatch_names}}
                     {{#each product.options}}
-                        {{{dynamicComponent 'components/products/options'}}}
+                        {{#if this.state}}
+                            {{#if this.state "modifier"}} 
+                                {{{dynamicComponent 'components/products/options'}}}
+                            {{/if}}
+                        {{/if}}
                     {{/each}}
                 </div>
                 <div class="form-field form-field--stock{{#unless product.stock_level}} u-hiddenVisually{{/unless}}">
@@ -60,8 +64,6 @@
                         <span data-product-stock>{{product.stock_level}}</span>
                     </label>
                 </div>
-                <button class="back-btn" style="display: inline-block;">Back</button>
-                <button class="next-btn" style="display: inline-block;">Next</button>
                 
                 {{> components/products/add-to-cart with_wallet_buttons=true}}
                 {{#if product.out_of_stock}}
