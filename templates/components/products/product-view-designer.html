@@ -30,6 +30,11 @@
         {{/if}}
     {{/each}}
 
+    <div class="productView-image-section">
+        <img src="" 
+             alt="Product Image" 
+             class="productView-large-image"/>
+    </div>
 
     <section class="productView-details product-options">
         <div class="productView-options">
@@ -55,6 +60,9 @@
                         <span data-product-stock>{{product.stock_level}}</span>
                     </label>
                 </div>
+                <button class="back-btn" style="display: inline-block;">Back</button>
+                <button class="next-btn" style="display: inline-block;">Next</button>
+                
                 {{> components/products/add-to-cart with_wallet_buttons=true}}
                 {{#if product.out_of_stock}}
                     {{#if product.out_of_stock_message}}

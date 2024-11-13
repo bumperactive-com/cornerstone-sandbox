@@ -13,6 +13,21 @@
 
 // Images
 // -----------------------------------------------------------------------------
+ 
+.productView-image-section {
+    width: 50%;
+    margin-bottom: 4rem;
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+}
+
+.productView-large-image {
+    width: 100%;
+    margin: auto;
+    display: flex;
+    height: auto;
+}
 
 .productView-images {
     margin-bottom: spacing("double");

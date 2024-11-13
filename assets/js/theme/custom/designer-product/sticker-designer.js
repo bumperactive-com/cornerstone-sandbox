@@ -76,6 +76,7 @@ export default class StickerDesigner extends PageManager {
     window.addEventListener('openDesignerReviewModal', (event) => {
       const excalidrawImgDataUrl = event.detail;
       this.openDesignerModal(excalidrawImgDataUrl);
+      this.updateProductViewImage(excalidrawImgDataUrl);
     })
   }
 
@@ -112,6 +113,10 @@ export default class StickerDesigner extends PageManager {
         this.modal.close();
       }
     });
+  }
+
+  updateProductViewImage(imgDataUrl) {
+    $('.productView-large-image').attr('src', imgDataUrl);
   }
 }
 
