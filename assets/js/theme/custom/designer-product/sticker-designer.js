@@ -18,9 +18,6 @@ export default class StickerDesigner extends PageManager {
     this.renderReactComponent(this.$excalidrawContainer[0], ExcalidrawDesigner, {canvasDimensions: canvasDimensions});
     this.modal = null;
     this.bindEvents();
-
-    this.showStep(this.currentStep);
-    this.bindStepEvents();
   }
 
   parseDimensions(dimensions) {
@@ -43,29 +40,6 @@ export default class StickerDesigner extends PageManager {
   renderReactComponent(container, ReactComponent, props = {}) {
     const root = createRoot(container);
     root.render(<ReactComponent {...props}/>);
-  }
-
-  bindStepEvents() {
-    document.querySelectorAll('.next-btn').forEach(button => {
-      button.addEventListener('click', () => {
-        this.currentStep = parseInt(button.getAttribute('data-next'), 10);
-        this.showStep(this.currentStep);
-      });
-    });
-
-    document.querySelectorAll('.back-btn').forEach(button => {
-      button.addEventListener('click', () => {
-        this.currentStep = parseInt(button.getAttribute('data-back'), 10);
-        this.showStep(this.currentStep);
-      });
-    });
-  }
-
-  showStep(step) {
-    document.querySelectorAll('.form-step').forEach(div => {
-      div.style.display = 'none';
-    });
-    document.getElementById('step-' + step).style.display = 'block';
   }
 
   bindEvents() {
