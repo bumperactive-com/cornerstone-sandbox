@@ -4,11 +4,10 @@
 
 // BAD CODE! VERY VERY BAD!
 #excalidraw-root {
-  position: fixed;
+  position: relative;
   top: 0;
   z-index: 1000;
-  width: 100vw;
-  height: 100vh;
+  height: 500px;
 
   #excalidraw {
     height: 100%;
@@ -30,37 +29,5 @@
     &:hover {
       transform: translate(-50%, -4px);
     }
-  }
-}
-
-#excalidraw-preview {
-  padding: 20px;
-
-  .excalidraw-img-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 2px solid black;
-    margin-bottom: 10px
-  }
-
-  .button-wrapper {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-  }
-
-  .button {
-    margin-bottom: 0;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    color: #000;
-    border-color: #ccc;
-
-  }
-
-  .button--primary {
-    background-color: #69e97a;
-    font-weight: 700;
-   
   }
 }
