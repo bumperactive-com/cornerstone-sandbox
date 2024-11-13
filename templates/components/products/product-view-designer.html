@@ -21,52 +21,6 @@
     {{/or}}"
     data-product-variant="single-product-option">
 
-    <div>
-        <p>Custom Multi-Step Product Form</p>
-
-        <div id="form-steps">
-            <div class="form-step" id="step-1" style="display: block;">
-                <h2>Step 1: Basic Info</h2>
-                {{> components/products/options options=product.options limit=2 offset=0}} {{! Display product options }}
-                <button class="next-btn" data-next="2">Next</button>
-            </div>
-
-            <div class="form-step" id="step-2" style="display: none;">
-                <h2>Step 2: Additional Info</h2>
-                {{> components/products/options options=product.options limit=5 offset=5}}
-                <button class="back-btn" data-back="1">Back</button>
-                <button class="next-btn" data-next="3">Next</button>
-            </div>
-
-            <div class="form-step" id="step-3" style="display: none;">
-                <h2>Step 3: Product Customization</h2>
-                {{> components/products/options options=product.options limit=5 offset=10}}
-                <button class="back-btn" data-back="2">Back</button>
-                <button class="next-btn" data-next="4">Next</button>
-            </div>
-
-            <div class="form-step" id="step-4" style="display: none;">
-                <h2>Step 4: Shipping Info</h2>
-                {{> components/products/options options=product.options limit=5 offset=15}}
-                <button class="back-btn" data-back="3">Back</button>
-                <button class="next-btn" data-next="5">Next</button>
-            </div>
-
-            <div class="form-step" id="step-5" style="display: none;">
-                <h2>Step 5: Payment Info</h2>
-                {{> components/products/options options=product.options limit=5 offset=20}}
-                <button class="back-btn" data-back="4">Back</button>
-                <button class="next-btn" data-next="6">Next</button>
-            </div>
-
-            <div class="form-step" id="step-6" style="display: none;">
-                <h2>Final Step</h2>
-                <button class="back-btn" data-back="5">Back</button>
-                <button class="add-to-cart-btn">Add to Cart</button>
-            </div>
-        </div>
-    </div>
-
     {{#each product.reviews.messages}}
         {{#if error}}
             {{> components/common/alert/alert-error error}}
