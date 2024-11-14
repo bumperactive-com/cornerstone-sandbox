@@ -66,6 +66,7 @@
         "switch_url": "https://cornerstone-warm-demo.mybigcommerce.com"
       }
     ],
+    "designer_server_url": "http://localhost:5000",
     "show_channels": false,
     "hide_breadcrumbs": false,
     "hide_page_heading": false,
