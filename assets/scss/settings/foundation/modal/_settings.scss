@@ -62,8 +62,8 @@ $modal-footer-link-margin:         spacing("single");
 
 
 //Designer Review Modal variables
-$button-bg-color: #69e97a;  
-$button-text-color: #000; 
+$designer-review-button-bg-color: stencilColor("designer-review-button-bg-color");
+$designer-review-button-text-color: stencilColor("designer-review-button-text-color");
 $button-font-weight: 700;  
 $button-padding-vertical: 0.75rem; 
 $button-padding-horizontal: 1.5rem;  
@@ -72,6 +72,7 @@ $designer-review-button-border-radius: 4px;
 $designer-review-actions-padding: 1rem;  
 $designer-review-actions-bg-color: #f0f0f0;  
 $designer-review-actions-align: space-between;  
+$designer-review-button-font-family: stencilFontFamily("headings-font"), Arial, Helvetica, sans-serif;
 
 
 // Foundation Variables

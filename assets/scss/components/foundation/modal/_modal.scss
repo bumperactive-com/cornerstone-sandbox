@@ -263,9 +263,9 @@
 }
 
 .designer-review-button {
-    font-family: "Montserrat", Arial, Helvetica, sans-serif;
-    background-color: $button-bg-color;  
-    color: $button-text-color;  
+    font-family: $designer-review-button-font-family;
+    background-color: $designer-review-button-bg-color;  
+    color: $designer-review-button-text-color;  
     font-weight: $button-font-weight; 
     padding: $button-padding-vertical $button-padding-horizontal; 
     border-radius: $designer-review-button-border-radius;  

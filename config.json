@@ -215,6 +215,8 @@
     "card--alternate-backgroundColor": "#ffffff",
     "card--alternate-borderColor": "#ffffff",
     "card--alternate-color--hover": "#ffffff",
+    "designer-review-button-bg-color": "#69e97a",
+    "designer-review-button-text-color": "#000000",
     "form-label-font-color": "#666666",
     "input-font-color": "#666666",
     "input-border-color": "#8F8F8F",
