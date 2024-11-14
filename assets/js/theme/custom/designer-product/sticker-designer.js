@@ -4,20 +4,27 @@ import { createRoot } from 'react-dom/client';
 import ExcalidrawDesigner from '../../../react-components/ExcalidrawDesigner.js';
 import { defaultModal } from '../../global/modal.js';
 import { api } from '@bigcommerce/stencil-utils';
+import DesignerApiClient from '../util/DesignerApiClient.js';
 
 export default class StickerDesigner extends PageManager {
   constructor(context) {
     super(context)
+    this.apiClient = new DesignerApiClient(this.context.serverBaseUrl);
     this.$excalidrawContainer = $('#excalidraw-designer');
     this.$productViewDesigner = $('#productViewDesigner');
+    this.$designerMetaFields = $('#designer-meta-fields');
+    // this.$addToCartBtn = $('#form-action-addToCart');
   }
 
   onReady() {
     this.$productViewDesigner.hide();
-    const canvasDimensions = this.parseDimensions(this.context.canvas_export_dimensions);
+    const canvasDimensions = this.parseDimensions(this.context.canvasExportDimensions);
     this.renderReactComponent(this.$excalidrawContainer[0], ExcalidrawDesigner, {canvasDimensions: canvasDimensions});
     this.modal = null;
     this.bindEvents();
+    // console.log($addToCartBtn);
+
+    this.testApiClient();
   }
 
   parseDimensions(dimensions) {
@@ -92,5 +99,9 @@ export default class StickerDesigner extends PageManager {
   updateProductViewImage(imgDataUrl) {
     $('.productView-large-image').attr('src', imgDataUrl);
   }
-}
 
+  async testApiClient() {
+    const responseData = await this.apiClient.getImagesData()
+    console.log(responseData);
+  }
+}
