@@ -218,3 +218,55 @@
         transform: scale(1);
     }
 }
+
+
+// =============================================================================
+// DESIGNER REVIEW MODAL STYLES
+// =============================================================================
+
+.designer-review-modal-header {
+    padding-left: $reveal-modal-paddingHorizontal;
+    padding-right: remCalc($reveal-close-height) + $reveal-close-side;
+}
+
+.designer-review-modal-header-title {
+    font-size: fontSize("large");
+    text-align: center;
+
+    @include breakpoint("medium") {
+        font-size: fontSize("larger");
+    }
+}
+
+.designer-review-modal-body {
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: $reveal-modal-padding;
+}
+
+.designer-review-excalidraw-img {
+    display: block;    
+    width: 100%;          
+    height: auto;           
+    margin: 0 auto;   
+}
+
+.designer-review-actions {
+    display: flex;
+    justify-content: $designer-review-actions-align;
+    padding: $designer-review-actions-padding;
+    background-color: $designer-review-actions-bg-color;  
+    border-radius: $designer-review-actions-border-radius;
+    width: 100%;
+    max-width: 300px; 
+    margin: 0 auto;  
+}
+
+.designer-review-button {
+    font-family: "Montserrat", Arial, Helvetica, sans-serif;
+    background-color: $button-bg-color;  
+    color: $button-text-color;  
+    font-weight: $button-font-weight; 
+    padding: $button-padding-vertical $button-padding-horizontal; 
+    border-radius: $designer-review-button-border-radius;  
+}

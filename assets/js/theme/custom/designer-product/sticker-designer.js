@@ -64,7 +64,7 @@ export default class StickerDesigner extends PageManager {
       }
       
       this.modal.updateContent(content);
-      $('.excalidraw-img').attr('src', imgDataUrl);
+      $('.designer-review-excalidraw-img').attr('src', imgDataUrl);
 
       this.bindDesignerModalEvents();
     });
