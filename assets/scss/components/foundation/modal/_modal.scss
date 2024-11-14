@@ -230,6 +230,8 @@
 }
 
 .designer-review-modal-header-title {
+    font-family: $designer-review-button-font-family;
+    font-weight: $designer-review-modal-header-font-weight;
     font-size: fontSize("large");
     text-align: center;
 
@@ -266,7 +268,7 @@
     font-family: $designer-review-button-font-family;
     background-color: $designer-review-button-bg-color;  
     color: $designer-review-button-text-color;  
-    font-weight: $button-font-weight; 
-    padding: $button-padding-vertical $button-padding-horizontal; 
+    font-weight: $designer-review-button-font-weight; 
+    padding: $designer-review-button-padding-vertical $designer-review-button-padding-horizontal; 
     border-radius: $designer-review-button-border-radius;  
 }
