@@ -13,7 +13,8 @@ export default class StickerDesigner extends PageManager {
     this.$excalidrawContainer = $('#excalidraw-designer');
     this.$productViewDesigner = $('#productViewDesigner');
     this.$designerMetaFields = $('#designer-meta-fields');
-    // this.$addToCartBtn = $('#form-action-addToCart');
+    this.designerImgDataUrl = null;
+    
   }
 
   onReady() {
@@ -22,9 +23,6 @@ export default class StickerDesigner extends PageManager {
     this.renderReactComponent(this.$excalidrawContainer[0], ExcalidrawDesigner, {canvasDimensions: canvasDimensions});
     this.modal = null;
     this.bindEvents();
-    // console.log($addToCartBtn);
-
-    this.testApiClient();
   }
 
   parseDimensions(dimensions) {
@@ -60,7 +58,8 @@ export default class StickerDesigner extends PageManager {
     })
   }
 
-  openDesignerModal(imgDataUrl) {
+  openDesignerModal(designerImgDataUrl) {
+    this.designerImgDataUrl = designerImgDataUrl;
     this.modal = defaultModal();
     
     // get modal template code
@@ -70,7 +69,7 @@ export default class StickerDesigner extends PageManager {
       }
       
       this.modal.updateContent(content);
-      $('.excalidraw-img').attr('src', imgDataUrl);
+      $('.excalidraw-img').attr('src', designerImgDataUrl);
 
       this.bindDesignerModalEvents();
     });
@@ -91,13 +90,50 @@ export default class StickerDesigner extends PageManager {
         this.$excalidrawContainer.hide()
         this.$productViewDesigner.show();
         this.modal.close();
+        this.bindProductViewDesignerEvents();
       }
     });
   }
 
-  async testApiClient() {
-    const responseData = await this.apiClient.getImagesData()
-    console.log(responseData);
+  bindProductViewDesignerEvents() {
+    this.$addToCartBtn = $('#form-action-addToCart');
+    this.$addToCartBtn.on('click', () => {
+      let metaDataObj = this.collectFormMetaData(this.$designerMetaFields);
+      console.log(metaDataObj);
+
+      // test code
+      this.testApiClient(this.getMockImagesData())
+    })
+  }
+
+  collectFormMetaData($form) {
+    const data = [];
+    $form.find('.form-field').each(function() {
+        const $field = $(this);
+        // data[$field.attr('name')] = $field.val();
+        data.push($field);
+    });
+    return data;
+  }
+
+  async testApiClient(data) {
+    const sendImagesResponse = await this.apiClient.sendImagesData(data);
+    console.log('Send images response: ', sendImagesResponse);
+
+    const getImagesResponse = await this.apiClient.getImagesData();
+    console.log('Get images response: ', getImagesResponse);
+  }
+
+  getMockImagesData() {
+    return {
+      id: "7b343752-bb90-411a-9247-a73a101d91b3",
+      customer_id: 12,
+      customer_email: "test@mock.com",
+      customer_name: "Mock Customer Name",
+      image: this.designerImgDataUrl,
+      name: "Mock Name",
+      description: "mock description"
+    }
   }
 }
 

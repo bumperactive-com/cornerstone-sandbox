@@ -3,8 +3,12 @@ export default class DesignerApiClient {
       this.baseUrl = baseUrl;
   }
 
-  async getImagesData(data) {
-      return await this.fetchRequest('/images', 'GET', data);
+  async getImagesData() {
+    return await this.fetchRequest('/images', 'GET');
+  }
+
+  async sendImagesData(data) {
+    return await this.fetchRequest('/images', 'POST', data);
   }
 
   async fetchRequest(endpoint, method, body = null) {
