@@ -240,6 +240,13 @@
             "name": "All {category}"
         }
     },
+    "modal": {
+        "designer_review": {
+            "title": "Review Your Design",
+            "edit_button": "Edit design",
+            "continue_button": "Continue"
+        }
+     },
     "brand": {
         "label": "Brands",
         "view_brands": "View all brands"
