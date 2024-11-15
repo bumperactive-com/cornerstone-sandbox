@@ -1,0 +1,15 @@
+//Designer Review Modal variables
+$designer-review-modal-header-font-weight: 700;
+$designer-review-modal-header-text-color: stencilColor("designer-review-modal-header-text-color");
+$designer-review-modal-body-bg-color: stencilColor("designer-review-modal-body-bg-color");
+$designer-review-button-bg-color: stencilColor("designer-review-button-bg-color");
+$designer-review-button-text-color: stencilColor("designer-review-button-text-color");
+$designer-review-button-font-weight: 700;  
+$designer-review-button-padding-vertical: 0.75rem; 
+$designer-review-button-padding-horizontal: 1.5rem;  
+$designer-review-button-border-radius: 4px;  
+$designer-review-actions-border-radius: 8px;  
+$designer-review-actions-padding: 1rem;  
+$designer-review-actions-bg-color: stencilColor("designer-review-actions-bg-color");  
+$designer-review-actions-align: space-between;  
+$designer-review-button-font-family: stencilFontFamily("headings-font"), Arial, Helvetica, sans-serif;
