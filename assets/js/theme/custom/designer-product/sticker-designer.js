@@ -57,7 +57,7 @@ export default class StickerDesigner extends PageManager {
     window.addEventListener('openDesignerReviewModal', (event) => {
       const excalidrawImgDataUrl = event.detail;
       this.openDesignerModal(excalidrawImgDataUrl);
-      this.updateProductViewImage(excalidrawImgDataUrl);
+      this.updateImageSource('.productView-large-image', excalidrawImgDataUrl);
     })
   }
 
@@ -71,7 +71,7 @@ export default class StickerDesigner extends PageManager {
       }
       
       this.modal.updateContent(content);
-      $('.designer-review-excalidraw-img').attr('src', imgDataUrl);
+      this.updateImageSource('.designer-review-excalidraw-img', imgDataUrl);
 
       this.bindDesignerModalEvents();
     });
@@ -96,8 +96,11 @@ export default class StickerDesigner extends PageManager {
     });
   }
 
-  updateProductViewImage(imgDataUrl) {
-    $('.productView-large-image').attr('src', imgDataUrl);
+  updateImageSource(selector, imgDataUrl) {
+    const $element = $(selector);
+    if ($element.length) {
+        $element.attr('src', imgDataUrl);
+    } 
   }
 
   async testApiClient() {
