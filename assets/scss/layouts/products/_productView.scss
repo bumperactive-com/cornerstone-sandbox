@@ -48,7 +48,7 @@
 
     @include breakpoint("medium") {
         clear: right;
-        float: none;
+        float: right;
         width: grid-calc(6, $total-columns);
         margin: auto;
     }
