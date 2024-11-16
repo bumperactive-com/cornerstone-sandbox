@@ -51,10 +51,8 @@
                 <div id="designer-meta-fields" data-product-option-change style="display:none;">
                     {{inject 'showSwatchNames' theme_settings.show_product_swatch_names}}
                     {{#each product.options}}
-                        {{#if this.state}}
-                            {{#if this.state "modifier"}} 
-                                {{{dynamicComponent 'components/products/options'}}}
-                            {{/if}}
+                        {{#if this.state "modifier"}} 
+                            {{{dynamicComponent 'components/products/options'}}}
                         {{/if}}
                     {{/each}}
                 </div>
