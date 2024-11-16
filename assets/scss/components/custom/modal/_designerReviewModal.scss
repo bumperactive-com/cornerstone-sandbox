@@ -1,0 +1,44 @@
+// =============================================================================
+// DESIGNER REVIEW MODAL STYLES
+// =============================================================================
+
+.designer-review-modal .modal-header-title {
+    font-family: $designerReviewModal-button-fontFamily;
+    font-weight: $designerReviewModal-button-fontWeight;
+}
+
+.designer-review-modal .modal-body {
+    background-color: $designerReviewModal-body-bg-color;  
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: $reveal-modal-padding;
+}
+
+.designer-review-modal img {
+    display: block;    
+    width: 100%;          
+    height: auto;           
+    margin: 0 auto;   
+}
+
+.designer-review-actions {
+    display: flex;
+    justify-content: $designerReviewModal-actions-align;
+    align-items: center;
+    padding: $designerReviewModal-actions-padding;
+    background-color: $designerReviewModal-actions-bg-color;  
+    border-radius: $designerReviewModal-actions-borderRadius;
+    width: 100%;
+    max-width: 22rem; 
+    margin: 2.25rem auto 0rem auto;
+}
+
+.designer-review-modal .button.button--primary {
+    font-family: $designerReviewModal-button-fontFamily;
+    background-color: $designerReviewModal-button-bg-color;  
+    color: $designerReviewModal-button-textColor;  
+    font-weight: $designerReviewModal-button-fontWeight; 
+    padding: $designerReviewModal-button-paddingVertical $designerReviewModal-button-paddingHorizontal; 
+    border-radius: $designerReviewModal-button-borderRadius;  
+    margin: auto;
+}
