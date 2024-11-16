@@ -3,12 +3,12 @@
 // =============================================================================
 
 .designer-review-modal .modal-header-title {
-    font-family: $designer-review-button-font-family;
-    font-weight: $designer-review-modal-header-font-weight;
+    font-family: $designerReviewModal-button-fontFamily;
+    font-weight: $designerReviewModal-button-fontWeight;
 }
 
 .designer-review-modal .modal-body {
-    background-color: $designer-review-modal-body-bg-color;  
+    background-color: $designerReviewModal-body-bg-color;  
     overflow: auto;
     -webkit-overflow-scrolling: touch;
     padding: $reveal-modal-padding;
@@ -23,22 +23,22 @@
 
 .designer-review-actions {
     display: flex;
-    justify-content: $designer-review-actions-align;
+    justify-content: $designerReviewModal-actions-align;
     align-items: center;
-    padding: $designer-review-actions-padding;
-    background-color: $designer-review-actions-bg-color;  
-    border-radius: $designer-review-actions-border-radius;
+    padding: $designerReviewModal-actions-padding;
+    background-color: $designerReviewModal-actions-bg-color;  
+    border-radius: $designerReviewModal-actions-borderRadius;
     width: 100%;
     max-width: 22rem; 
     margin: 2.25rem auto 0rem auto;
 }
 
 .designer-review-modal .button.button--primary {
-    font-family: $designer-review-button-font-family;
-    background-color: $designer-review-button-bg-color;  
-    color: $designer-review-button-text-color;  
-    font-weight: $designer-review-button-font-weight; 
-    padding: $designer-review-button-padding-vertical $designer-review-button-padding-horizontal; 
-    border-radius: $designer-review-button-border-radius;  
+    font-family: $designerReviewModal-button-fontFamily;
+    background-color: $designerReviewModal-button-bg-color;  
+    color: $designerReviewModal-button-textColor;  
+    font-weight: $designerReviewModal-button-fontWeight; 
+    padding: $designerReviewModal-button-paddingVertical $designerReviewModal-button-paddingHorizontal; 
+    border-radius: $designerReviewModal-button-borderRadius;  
     margin: auto;
 }
