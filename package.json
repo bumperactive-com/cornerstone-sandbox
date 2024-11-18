@@ -9,6 +9,7 @@
     "@babel/preset-react": "^7.25.9",
     "@bigcommerce/stencil-utils": "6.18.0",
     "@excalidraw/excalidraw": "^0.17.6",
+    "bigcommerce-cornerstone": "file:",
     "core-js": "^3.9.0",
     "creditcards": "^4.2.0",
     "easyzoom": "^2.5.3",
