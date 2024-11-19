@@ -4,6 +4,10 @@
 
 .productViewDesigner .productView-details {
     float: none;
+    
+    @include breakpoint("medium") {
+        margin: auto;
+    }
 }
 
 .productView-image-section {
