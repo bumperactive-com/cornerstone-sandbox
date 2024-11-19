@@ -2,6 +2,7 @@ import PageManager from '../page-manager.js';
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import ExcalidrawDesigner from '../../components/ExcalidrawDesigner.js';
+import '@bumperactive/excalidraw/index.css';
 
 
 export default class ExcalidrawProduct extends PageManager {

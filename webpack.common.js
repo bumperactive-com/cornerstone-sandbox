@@ -40,6 +40,10 @@ module.exports = {
                 },
             },
             {
+                test: /\.css$/,
+                use: ['style-loader', 'css-loader'],
+            },
+            {
                 test: require.resolve("jquery"),
                 loader: "expose-loader",
                 options: {
@@ -82,6 +86,7 @@ module.exports = {
     resolve: {
         fallback:  { "url": require.resolve("url/") },
         alias: {
+            'roughjs': path.resolve('node_modules/roughjs'),
             jquery: path.resolve(__dirname, 'node_modules/jquery/dist/jquery.min.js'),
             jstree: path.resolve(__dirname, 'node_modules/jstree/dist/jstree.min.js'),
             lazysizes: path.resolve(__dirname, 'node_modules/lazysizes/lazysizes.min.js'),

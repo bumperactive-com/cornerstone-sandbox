@@ -8,6 +8,7 @@
   "dependencies": {
     "@babel/preset-react": "^7.25.9",
     "@bigcommerce/stencil-utils": "6.18.0",
+    "@bumperactive/excalidraw": "^0.18.4",
     "@excalidraw/excalidraw": "^0.17.6",
     "core-js": "^3.9.0",
     "creditcards": "^4.2.0",
