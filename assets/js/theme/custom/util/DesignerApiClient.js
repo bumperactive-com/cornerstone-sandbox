@@ -22,4 +22,16 @@ export default class DesignerApiClient {
       if (!response.ok) throw new Error(`Error: ${response.status}`);
       return await response.json();
   }
+
+  getMockImagesData(imgDataUrl) {
+    return {
+      id: "7b343752-bb90-411a-9247-a73a101d91b3",
+      customer_id: 12,
+      customer_email: "test@mock.com",
+      customer_name: "Mock Customer Name",
+      image: imgDataUrl,
+      name: "Mock Name",
+      description: "mock description"
+    }
+  }
 }
