@@ -5,11 +5,17 @@ import ExcalidrawDesigner from '../../../react-components/ExcalidrawDesigner.js'
 import { defaultModal } from '../../global/modal.js';
 import { api } from '@bigcommerce/stencil-utils';
 import DesignerApiClient from '../util/DesignerApiClient.js';
+import CartApiClient from '../util/CartApiClient';
+
+const excalidrawImgDataFieldSelector = 'input[name="attribute[2287]"]';
+const excalidrawCustomImgDataFieldSelector = 'input[name="custom_field_image_data_url"]';
+
 
 export default class StickerDesigner extends PageManager {
   constructor(context) {
     super(context)
     this.apiClient = new DesignerApiClient(this.context.serverBaseUrl);
+    this.cartApiClient = new CartApiClient(); // Proper initialization
     this.$excalidrawContainer = $('#excalidraw-designer');
     this.$productViewDesigner = $('#productViewDesigner');
     this.$designerMetaFields = $('#designer-meta-fields');
@@ -23,7 +29,7 @@ export default class StickerDesigner extends PageManager {
     this.modal = null;
     this.bindEvents();
     // console.log($addToCartBtn);
-
+    this.testCartApi();
     this.testApiClient();
   }
 
@@ -72,6 +78,8 @@ export default class StickerDesigner extends PageManager {
       
       this.modal.updateContent(content);
       this.updateImageSource('.designer-review-excalidraw-img', imgDataUrl);
+      this.updateTextField(excalidrawImgDataFieldSelector, imgDataUrl);
+      this.updateTextField(excalidrawCustomImgDataFieldSelector, imgDataUrl);
 
       this.bindDesignerModalEvents();
     });
@@ -102,6 +110,26 @@ export default class StickerDesigner extends PageManager {
         $element.attr('src', imgDataUrl);
     } 
   }
+
+  updateTextField(selector, value) {
+    const $inputField = $(selector);
+    if ($inputField.length) {
+        $inputField.val(value);
+    } else {
+        console.warn(`The ${selector} isn't found.`);
+    }
+  }
+
+  async testCartApi() {
+    try {
+        const cartData = await this.cartApiClient.getCart(
+            '/api/storefront/carts?include=lineItems.digitalItems.options,lineItems.physicalItems.options'
+        );
+        console.log(cartData);
+    } catch (error) {
+        console.error("Error fetching cart data:", error);
+    }
+  } 
 
   async testApiClient() {
     const responseData = await this.apiClient.getImagesData()
