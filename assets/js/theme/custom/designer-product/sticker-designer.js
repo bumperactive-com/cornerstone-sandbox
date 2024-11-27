@@ -5,6 +5,7 @@ import ExcalidrawDesigner from '../../../react-components/ExcalidrawDesigner.js'
 import { defaultModal } from '../../global/modal.js';
 import { api } from '@bigcommerce/stencil-utils';
 import DesignerApiClient from '../util/DesignerApiClient.js';
+import '@bumperactive/excalidraw/index.css';
 
 export default class StickerDesigner extends PageManager {
   constructor(context) {
