@@ -53,8 +53,10 @@ const pageClasses = {
 };
 
 const customClasses = {
-  'pages\\custom\\product\\excalidraw': () => import('./theme/custom/excalidraw-product'), // Windows
-  'pages/custom/product/excalidraw': () => import('./theme/custom/excalidraw-product'), // Mac/Linux
+  // Windows
+  'pages\\custom\\product\\sticker-designer': () => import('./theme/custom/designer-product/sticker-designer'),
+  // Mac/Linux
+  'pages/custom/product/sticker-designer': () => import('./theme/custom/designer-product/sticker-designer'),
 };
 
 /**

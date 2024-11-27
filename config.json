@@ -66,6 +66,7 @@
         "switch_url": "https://cornerstone-warm-demo.mybigcommerce.com"
       }
     ],
+    "designer_server_url": "http://localhost:5000",
     "show_channels": false,
     "hide_breadcrumbs": false,
     "hide_page_heading": false,
@@ -123,6 +124,7 @@
     "thumb_size": "100x100",
     "zoom_size": "1280x1280",
     "blog_size": "190x250",
+    "sticker_designer_canvas_export_dimensions": "600x200",
     "default_image_brand": "img/BrandDefault.gif",
     "default_image_product": "img/ProductDefault.gif",
     "default_image_gift_certificate": "img/GiftCertificate.png",
@@ -214,6 +216,11 @@
     "card--alternate-backgroundColor": "#ffffff",
     "card--alternate-borderColor": "#ffffff",
     "card--alternate-color--hover": "#ffffff",
+    "designerReviewModal-actions-bg-color": "#f0f0f0", 
+    "designerReviewModal-button-bg-color": "#69e97a",
+    "designerReviewModal-button-textColor": "#000000",
+    "designerReviewModal-header-textColor": "#000000",
+    "designerReviewModal-body-bg-color": "#f0f0f0",
     "form-label-font-color": "#666666",
     "input-font-color": "#666666",
     "input-border-color": "#8F8F8F",
