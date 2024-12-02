@@ -33,6 +33,7 @@ export default class Account extends PageManager {
         const $reorderForm = classifyForm('[data-account-reorder-form]');
         const $invoiceButton = $('[data-print-invoice]');
         const $bigCommerce = window.BigCommerce;
+     
 
         compareProducts(this.context);
 
@@ -180,6 +181,7 @@ export default class Account extends PageManager {
         this.bindDeletePaymentMethod();
     }
 
+    
     /**
      * Binds a submit hook to ensure the customer receives a confirmation dialog before deleting an address
      */

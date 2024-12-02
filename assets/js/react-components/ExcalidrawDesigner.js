@@ -37,7 +37,7 @@ export default function ExcalidrawDesigner({ canvasDimensions }) {
         getDimensions: () => canvasDimensions,
         exportPadding: 0
     });
-
+    
     const imgDataUrl = convertCanvasToDataUrl(canvas);
     saveToLocalStorage('excalidrawImg', imgDataUrl);
 
@@ -52,6 +52,7 @@ export default function ExcalidrawDesigner({ canvasDimensions }) {
   }
 
   function convertCanvasToDataUrl(canvas, imgType = 'png', quality = 1.0) {
+    console.log("this is the canvas", canvas)
     imgType = 'image/' + imgType;
     const ctx = canvas.getContext("2d");
     return canvas.toDataURL(imgType, quality);

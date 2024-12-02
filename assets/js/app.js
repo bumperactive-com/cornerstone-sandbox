@@ -57,6 +57,16 @@ const customClasses = {
   'pages\\custom\\product\\sticker-designer': () => import('./theme/custom/designer-product/sticker-designer'),
   // Mac/Linux
   'pages/custom/product/sticker-designer': () => import('./theme/custom/designer-product/sticker-designer'),
+
+  // Windows
+  'pages\\custom\\page\\my-designs': () => import('./theme/custom/designer-product/my-designs'),
+  // Mac/Linux
+  'pages/custom/page/my-designs': () => import('./theme/custom/designer-product/my-designs'),
+
+  // Windows
+  'pages\\custom\\page\\design-page': () => import('./theme/custom/designer-product/design-page'),
+  // Mac/Linux
+  'pages/custom/page/design-page': () => import('./theme/custom/designer-product/design-page')
 };
 
 /**
