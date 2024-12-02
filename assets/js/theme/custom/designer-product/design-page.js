@@ -1,4 +1,5 @@
 import PageManager from '../../page-manager.js';
+import createDesignPageHtml from '../templates/design-page-template.js';
 
 const designPageContainerSelector = ".design-page-container";
 
@@ -47,13 +48,7 @@ export default class DesignPage extends PageManager {
   renderDesignPage(designData) {
     const designPageContainer = document.querySelector(designPageContainerSelector);
     if (designPageContainer) {
-      const designHtml = `
-        <div class="design-item">
-          <p><strong>Title:</strong> ${designData.title}</p>
-          <p><strong>Description:</strong> ${designData.description}</p>
-          <img src="${designData.imgPath}" alt="Image">
-        </div>
-      `;
+      const designHtml = createDesignPageHtml(designData);
       designPageContainer.innerHTML = designHtml;
     } else {
       console.error("Design page container not found.");
