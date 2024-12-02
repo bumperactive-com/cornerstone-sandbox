@@ -29,8 +29,8 @@ export default class MyDesigns extends PageManager {
       
       return {
         designs: [
-          { id: 1, imgPath: "https://cdn11.bigcommerce.com/s-t8h0eqr68h/images/stencil/original/image-manager/fldems.png?t=1733089981", title: 'Mock Design 1', description: 'For testing only', category: 'Philosophy', edit_url: '/edit/1', view_url: '/view/1' },
-          { id: 2, imgPath: "https://cdn11.bigcommerce.com/s-t8h0eqr68h/images/stencil/original/image-manager/akdems.png?t=1733089982", title: 'Mock Design 2', description: 'Another design example', category: 'Politics', edit_url: '/edit/2', view_url: '/view/2' }
+          { id: 1, imgPath: "https://cdn11.bigcommerce.com/s-t8h0eqr68h/images/stencil/original/image-manager/fldems.png?t=1733089981", title: 'Mock Design 1', description: 'For testing only', category: 'Philosophy', view_url: '/view/1' },
+          { id: 2, imgPath: "https://cdn11.bigcommerce.com/s-t8h0eqr68h/images/stencil/original/image-manager/akdems.png?t=1733089982", title: 'Mock Design 2', description: 'Another design example', category: 'Politics', view_url: '/view/2' }
         ]
       };
     }
@@ -45,7 +45,6 @@ export default class MyDesigns extends PageManager {
           <p><strong>Title:</strong> ${design.title}</p>
           <p><strong>Category:</strong> ${design.category}</p>
            <img src="${design.imgPath}" alt="Image">
-          <p><a href="${design.edit_url}" class="button button--small">Edit</a></p>
           <p><a href="/my-designs/design-page?id=${design.id}" class="button button--small view-button" data-id="${design.id}">View</a></p>
         </div>
       `;
