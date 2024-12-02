@@ -97,7 +97,6 @@ export default class StickerDesigner extends PageManager {
     this.$addToCartForm = $(addToCartFormSelector);
     this.$addToCartForm.on('submit', () => {
       let metaDataObj = this.getFormFields(this.$addToCartForm);
-      console.log(metaDataObj);
 
       // TEST CODE
       this.testApiClient( this.apiClient.getMockImagesData(this.designerImgDataUrl) );
@@ -117,10 +116,10 @@ export default class StickerDesigner extends PageManager {
 
   async testApiClient(data) {
     const sendImagesResponse = await this.apiClient.sendImagesData(data);
-    console.log('Send images response: ', sendImagesResponse);
+    // console.log('Send images response: ', sendImagesResponse);
 
     const getImagesResponse = await this.apiClient.getImagesData();
-    console.log('Get images response: ', getImagesResponse);
+    // console.log('Get images response: ', getImagesResponse);
   }
 }
 
