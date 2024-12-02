@@ -1,4 +1,5 @@
 import PageManager from '../../page-manager.js';
+import createMyDesignsHtml from '../templates/my-designs-template.js'; // Adjust the path if necessary
 
 const myDesignsContainerSelector = '.my-designs-container';
 
@@ -40,14 +41,7 @@ export default class MyDesigns extends PageManager {
     const container = document.querySelector(myDesignsContainerSelector);
     container.innerHTML = '';
     customerData.designs.forEach(design => {
-      const designHtml = `
-        <div class="design-item">
-          <p><strong>Title:</strong> ${design.title}</p>
-          <p><strong>Category:</strong> ${design.category}</p>
-           <img src="${design.imgPath}" alt="Image">
-          <p><a href="/my-designs/design-page?id=${design.id}" class="button button--small view-button" data-id="${design.id}">View</a></p>
-        </div>
-      `;
+      const designHtml = createMyDesignsHtml(design);
       container.insertAdjacentHTML('beforeend', designHtml);
     });
   }
