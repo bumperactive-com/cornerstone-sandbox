@@ -39,10 +39,6 @@ module.exports = {
                     },
                 },
             },
-            // {
-            //     test: /\.css$/,
-            //     use: ['style-loader', 'css-loader'],
-            // },
             {
                 test: require.resolve("jquery"),
                 loader: "expose-loader",
