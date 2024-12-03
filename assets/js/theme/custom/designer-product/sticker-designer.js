@@ -19,7 +19,6 @@ export default class StickerDesigner extends PageManager {
   }
 
   onReady() {
-    console.log('mounting');
     this.$productViewDesigner.hide();
     const canvasDimensions = this.parseDimensions(this.context.canvasExportDimensions);
     this.renderReactComponent(this.$excalidrawContainer[0], CustomExcalidrawDesigner, {canvasDimensions: canvasDimensions});
