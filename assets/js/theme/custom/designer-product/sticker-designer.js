@@ -2,6 +2,7 @@ import PageManager from '../../page-manager.js';
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import ExcalidrawDesigner from '../../../react-components/ExcalidrawDesigner.js';
+import CustomExcalidrawDesigner from '../../../react-components/CustomExcalidrawDesigner.js';
 import { defaultModal } from '../../global/modal.js';
 import { api } from '@bigcommerce/stencil-utils';
 import DesignerApiClient from '../util/DesignerApiClient.js';
@@ -18,9 +19,10 @@ export default class StickerDesigner extends PageManager {
   }
 
   onReady() {
+    console.log('mounting');
     this.$productViewDesigner.hide();
     const canvasDimensions = this.parseDimensions(this.context.canvasExportDimensions);
-    this.renderReactComponent(this.$excalidrawContainer[0], ExcalidrawDesigner, {canvasDimensions: canvasDimensions});
+    this.renderReactComponent(this.$excalidrawContainer[0], CustomExcalidrawDesigner, {canvasDimensions: canvasDimensions});
     this.modal = null;
     this.bindEvents();
     // console.log($addToCartBtn);
@@ -37,7 +39,7 @@ export default class StickerDesigner extends PageManager {
 
     // Split the string by 'x' to separate width and height
     const [width, height] = dimensions.split('x');
-    
+
     // Return as object
     return {
       width: parseInt(width, 10),
@@ -64,13 +66,13 @@ export default class StickerDesigner extends PageManager {
 
   openDesignerModal(imgDataUrl) {
     this.modal = defaultModal();
-    
+
     // get modal template code
     api.getPage('/sticker-designer', {template: 'products/modals/designerReview'}, (err, content) => {
       if (err) {
           return this.modal.updateContent(this.context.previewError);
       }
-      
+
       this.modal.updateContent(content);
       this.updateImageSource('.designer-review-excalidraw-img', imgDataUrl);
 
@@ -101,7 +103,7 @@ export default class StickerDesigner extends PageManager {
     const $element = $(selector);
     if ($element.length) {
         $element.attr('src', imgDataUrl);
-    } 
+    }
   }
 
   async testApiClient() {

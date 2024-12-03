@@ -1,60 +1,59 @@
-import React, { useState, useRef } from 'react';
-import {
-  DEFAULT_BUBBLE_BACKGROUND_COLOR,
-  DEFAULT_BUBBLE_TEXT_COLOR,
-  DEFAULT_OVERFLOW_AREA_OPACITY,
-  DEFAULT_STICKER_BACKGROUND_COLOR,
-  ExcalidrawWrapper,
-  PreviewPage,
-} from "@bumperactive/excalidraw";
+import React from 'react';
+import { Excalidraw, exportToCanvas } from '@excalidraw/excalidraw/dist/excalidraw.production.min.js';
 
-
-export default function ExcalidrawDesigner() {
-  const [sceneData, setSceneData] = useState({
-    elements: [],
-    library: [],
-    stickerType: "rectangle",
-    bubbleTextColor: DEFAULT_BUBBLE_TEXT_COLOR,
-    bubbleBackgroundColor: DEFAULT_BUBBLE_BACKGROUND_COLOR,
-    stickerBackgroundColor: DEFAULT_STICKER_BACKGROUND_COLOR,
-    overflowAreaOpacity: DEFAULT_OVERFLOW_AREA_OPACITY,
-  });
-  const [stickerSvg, setStickerSvg] = useState(null);
-  const excalidrawRef = useRef(null);
-
-  const [isOpen, setIsOpen] = useState(true);
-
-  const saveData = (closeSceneData, closeStickerSvg) => {
-    // setSceneData(closeSceneData);
-    // setStickerSvg(closeStickerSvg);
-  };
-
-  const saveSceneData = async () => {
-    const api = excalidrawRef.current;
-    if (!api) {
-      return;
-    }
-    const curSceneData = await api.exportSceneData();
-    const curStickerSvg = await api.exportSticker();
-    setSceneData(curSceneData);
-    setStickerSvg(curStickerSvg || null);
-  };
+export default function ExcalidrawDesigner({ canvasDimensions }) {
+  const [excalidrawAPI, setExcalidrawAPI] = React.useState(null);
 
   return (
     <>
-      {isOpen ? (
-        <ExcalidrawWrapper
-          ref={excalidrawRef}
-          sceneData={sceneData}
-          onCloseButtonPressed={() => {
-            saveSceneData();
-            setTimeout(() => setIsOpen(false), 1);
-          }}
-          onClose={saveData}
-        />
-      ) : (
-        <PreviewPage stickerSvg={stickerSvg} />
-      )}
+      <div id="excalidraw">
+        <Excalidraw excalidrawAPI={(api) => setExcalidrawAPI(api)} />
+      </div>
+      
+      <a onClick={() => handleButtonClick()} className="button button--primary">Review design</a>
     </>
-  );
+  )
+
+  async function handleButtonClick() {
+    // if Excalidraw API ready
+    if (!excalidrawAPI) {
+      console.error('excalidrawAPI not found');
+      return
+    }
+
+    // if user created design elements exist
+    const excalidrawElements = excalidrawAPI.getSceneElements();
+    if (!excalidrawElements || !excalidrawElements.length) {
+        // TODO: show message to user
+        const errorMsg = 'No scene elements found. Create a design first.';
+        console.error(errorMsg);
+        return
+    }
+
+    const canvas = await exportToCanvas({
+        elements: excalidrawAPI.getSceneElements(),
+        appState: excalidrawAPI.getAppState(),
+        files: excalidrawAPI.getFiles(),
+        getDimensions: () => canvasDimensions,
+        exportPadding: 0
+    });
+
+    const imgDataUrl = convertCanvasToDataUrl(canvas);
+    saveToLocalStorage('excalidrawImg', imgDataUrl);
+
+    // Emit custom event with the img data URL
+    const designerReviewEvent = new CustomEvent('openDesignerReviewModal', { detail: imgDataUrl });
+    window.dispatchEvent(designerReviewEvent);
+  }
+
+  function saveToLocalStorage(key, data) {
+    localStorage.setItem(key, data);
+    console.log(`Saved '${key}' data to localStorage`);
+  }
+
+  function convertCanvasToDataUrl(canvas, imgType = 'png', quality = 1.0) {
+    imgType = 'image/' + imgType;
+    const ctx = canvas.getContext("2d");
+    return canvas.toDataURL(imgType, quality);
+  }
 }
