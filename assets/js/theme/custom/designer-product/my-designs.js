@@ -13,7 +13,7 @@ export default class MyDesigns extends PageManager {
 
   onReady() {
     console.log(this.context);
-    console.log("this be cusotmer designs yo", customerDesigns);
+    console.log("these are the customer designs", customerDesigns);
     console.log("customerName", this.customerName, "customerId", this.customerId);
     this.fetchCustomerData().then(customerData => {
       this.renderDesigns(customerData);
@@ -32,21 +32,34 @@ export default class MyDesigns extends PageManager {
       
       return {
         designs: customerDesigns
-        // designs: [
-        //   { id: 1, imgPath: "https://cdn11.bigcommerce.com/s-t8h0eqr68h/images/stencil/original/image-manager/fldems.png?t=1733089981", title: 'Mock Design 1', description: 'For testing only', category: 'Philosophy', view_url: '/view/1' },
-        //   { id: 2, imgPath: "https://cdn11.bigcommerce.com/s-t8h0eqr68h/images/stencil/original/image-manager/akdems.png?t=1733089982", title: 'Mock Design 2', description: 'Another design example', category: 'Politics', view_url: '/view/2' }
-        // ]
       };
     }
   }
 
   renderDesigns(customerData) {
-    console.log("ok this is hte customer data", customerData);
     const container = document.querySelector(myDesignsContainerSelector);
     container.innerHTML = '';
-    customerData.designs.forEach(design => {
-      const designHtml = createMyDesignsHtml(design);
-      container.insertAdjacentHTML('beforeend', designHtml);
+
+    // grouping the designs by category
+    const designsByCategory = customerData.designs.reduce((acc, design) => {
+        const category = design.category; 
+        if (!acc[category]) {
+            acc[category] = [];
+        }
+        acc[category].push(design);
+        return acc;
+    }, {});
+    
+    console.log("designsByCategory", designsByCategory)
+
+    Object.entries(designsByCategory).forEach(([category, designs]) => {
+        container.insertAdjacentHTML('beforeend', `<h1>${category}</h1>`);
+   
+        designs.forEach(design => {
+            const designHtml = createMyDesignsHtml(design);
+            container.insertAdjacentHTML('beforeend', designHtml);
+        });
     });
   }
+
 }
