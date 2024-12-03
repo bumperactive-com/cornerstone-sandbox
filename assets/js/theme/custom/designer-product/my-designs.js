@@ -1,5 +1,5 @@
 import PageManager from '../../page-manager.js';
-import createMyDesignsHtml from '../templates/my-designs-template.js'; // Adjust the path if necessary
+import createMyDesignsHtml from '../templates/my-designs-template.js';
 
 const myDesignsContainerSelector = '.my-designs-container';
 
