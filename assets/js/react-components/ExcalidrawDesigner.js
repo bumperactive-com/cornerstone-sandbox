@@ -39,16 +39,11 @@ export default function ExcalidrawDesigner({ canvasDimensions }) {
     });
     
     const imgDataUrl = convertCanvasToDataUrl(canvas);
-    saveToLocalStorage('excalidrawImg', imgDataUrl);
+    localStorage.setItem('excalidrawImg', imgDataUrl);
 
     // Emit custom event with the img data URL
     const designerReviewEvent = new CustomEvent('openDesignerReviewModal', { detail: imgDataUrl });
     window.dispatchEvent(designerReviewEvent);
-  }
-
-  function saveToLocalStorage(key, data) {
-    localStorage.setItem(key, data);
-    console.log(`Saved '${key}' data to localStorage`);
   }
 
   function convertCanvasToDataUrl(canvas, imgType = 'png', quality = 1.0) {
