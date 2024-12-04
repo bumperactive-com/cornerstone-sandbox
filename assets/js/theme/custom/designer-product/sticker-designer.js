@@ -1,28 +1,38 @@
 import PageManager from '../../page-manager.js';
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import ExcalidrawDesigner from '../../../react-components/ExcalidrawDesigner.js';
+// import ExcalidrawDesigner from '../../../react-components/ExcalidrawDesigner.js';
 import CustomExcalidrawDesigner from '../../../react-components/CustomExcalidrawDesigner.js';
 import { defaultModal } from '../../global/modal.js';
 import { api } from '@bigcommerce/stencil-utils';
 import DesignerApiClient from '../util/DesignerApiClient.js';
+import parseDimensions from '../util/parseDimensions.js';
 import '@bumperactive/excalidraw/index.css';
+
+const excalidrawDesignerSelector = '#excalidraw-designer';
+const productViewSelector = '#productViewDesigner';
+const modalEditBtnSelector = '[data-designer-modal-edit]';
+const modalContinueBtnSelector = '[data-designer-modal-continue]';
+const modalImgSelector = '#designer-review-modal img';
+const productViewImgSelector = '.productView-large-image';
+const addToCartFormSelector = '[data-cart-item-add]';
+
 
 export default class StickerDesigner extends PageManager {
   constructor(context) {
     super(context)
     this.apiClient = new DesignerApiClient(this.context.serverBaseUrl);
-    this.$excalidrawContainer = $('#excalidraw-designer');
-    this.$productViewDesigner = $('#productViewDesigner');
-    this.$designerMetaFields = $('#designer-meta-fields');
-    // this.$addToCartBtn = $('#form-action-addToCart');
   }
 
   onReady() {
-    this.$productViewDesigner.hide();
-    const canvasDimensions = this.parseDimensions(this.context.canvasExportDimensions);
-    this.renderReactComponent(this.$excalidrawContainer[0], CustomExcalidrawDesigner, {canvasDimensions: canvasDimensions});
+    this.$excalidrawContainer = $(excalidrawDesignerSelector);
+    this.$productViewDesigner = $(productViewSelector);
+    this.designerImgDataUrl = null;
     this.modal = null;
+
+    this.$productViewDesigner.hide();
+    const canvasDimensions = parseDimensions(this.context.canvasExportDimensions);
+    this.renderReactComponent(this.$excalidrawContainer[0], CustomExcalidrawDesigner, {canvasDimensions: canvasDimensions});
     this.bindEvents();
     // console.log($addToCartBtn);
 
@@ -59,11 +69,12 @@ export default class StickerDesigner extends PageManager {
     window.addEventListener('openDesignerReviewModal', (event) => {
       const excalidrawImgDataUrl = event.detail;
       this.openDesignerModal(excalidrawImgDataUrl);
-      this.updateImageSource('.productView-large-image', excalidrawImgDataUrl);
+      this.updateImageSource(productViewImgSelector, excalidrawImgDataUrl);
     })
   }
 
-  openDesignerModal(imgDataUrl) {
+  openDesignerModal(designerImgDataUrl) {
+    this.designerImgDataUrl = designerImgDataUrl;
     this.modal = defaultModal();
 
     // get modal template code
@@ -73,8 +84,7 @@ export default class StickerDesigner extends PageManager {
       }
 
       this.modal.updateContent(content);
-      this.updateImageSource('.designer-review-excalidraw-img', imgDataUrl);
-
+      this.updateImageSource(modalImgSelector, designerImgDataUrl);
       this.bindDesignerModalEvents();
     });
     this.modal.open();
@@ -86,14 +96,15 @@ export default class StickerDesigner extends PageManager {
     }
 
     this.modal.$content.on('click', (event) => {
-      if ($(event.target).is('[data-designer-modal-edit]')) {
+      if ($(event.target).is(modalEditBtnSelector)) {
         this.modal.close();
       }
 
-      if ($(event.target).is('[data-designer-modal-continue]')) {
+      if ($(event.target).is(modalContinueBtnSelector)) {
         this.$excalidrawContainer.hide()
         this.$productViewDesigner.show();
         this.modal.close();
+        this.bindProductViewDesignerEvents();
       }
     });
   }
@@ -105,8 +116,33 @@ export default class StickerDesigner extends PageManager {
     }
   }
 
-  async testApiClient() {
-    const responseData = await this.apiClient.getImagesData()
-    console.log(responseData);
+  bindProductViewDesignerEvents() {
+    this.$addToCartForm = $(addToCartFormSelector);
+    this.$addToCartForm.on('submit', () => {
+      let metaDataObj = this.getFormFields(this.$addToCartForm);
+
+      // TEST CODE
+      this.testApiClient( this.apiClient.getMockImagesData(this.designerImgDataUrl) );
+    })
+  }
+
+  // To-do: get form field data
+  getFormFields($form) {
+    const data = [];
+    $form.find('.form-field').each(function() {
+        const $field = $(this);
+        const fieldValue = data[$field.attr('name')] = $field.val();
+        data.push(fieldValue);
+    });
+    return data;
+  }
+
+  async testApiClient(data) {
+    const sendImagesResponse = await this.apiClient.sendImagesData(data);
+    // console.log('Send images response: ', sendImagesResponse);
+
+    const getImagesResponse = await this.apiClient.getImagesData();
+    // console.log('Get images response: ', getImagesResponse);
   }
 }
+
