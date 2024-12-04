@@ -12,7 +12,6 @@ export default class DesignPage extends PageManager {
 
   onReady() {
     const designId = this.getQueryParam('id');
-    console.log("Design ID", designId);
 
     if (designId) {
       this.fetchDesignDetails(designId).then(designData => {
@@ -45,7 +44,6 @@ export default class DesignPage extends PageManager {
   }
 
   renderDesignPage(designData) {
-    console.log("this is the design data", designData);
     const designPageContainer = document.querySelector(designPageContainerSelector);
     if (designPageContainer) {
       const designHtml = createDesignPageHtml(designData);
