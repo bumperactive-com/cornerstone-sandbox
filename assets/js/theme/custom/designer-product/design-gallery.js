@@ -12,8 +12,6 @@ export default class MyDesigns extends PageManager {
   }
 
   onReady() {
-    console.log(this.context);
-    console.log("customerName", this.customerName, "customerId", this.customerId);
     this.fetchCustomerData().then(customerData => {
       this.renderDesigns(customerData);
     });
@@ -29,6 +27,7 @@ export default class MyDesigns extends PageManager {
     } catch (error) {
       console.error("Error fetching customer data, using mock data", error);
       
+      // returns object with the property 'designs'.  the response data is in array format
       return {
         designs: allDesignsTestData
       };
@@ -39,7 +38,7 @@ export default class MyDesigns extends PageManager {
     const container = document.querySelector(myDesignsContainerSelector);
     container.innerHTML = '';
 
-    // grouping the designs by category
+    // groups the designs by category
     const designsByCategory = customerData.designs.reduce((acc, design) => {
         const category = design.category; 
         if (!acc[category]) {
@@ -50,8 +49,9 @@ export default class MyDesigns extends PageManager {
     }, {});
     
     console.log("designsByCategory", designsByCategory)
+    console.log(Object.entries(designsByCategory));
 
-    //Object.entries returns an array of key value pairs so 
+    // Object.entries returns an array of key value pairs so 
     Object.entries(designsByCategory).forEach(([category, designs]) => {
         container.insertAdjacentHTML('beforeend', `<h1>${category}</h1>`);
    
