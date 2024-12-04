@@ -47,11 +47,8 @@ export default class MyDesigns extends PageManager {
         acc[category].push(design);
         return acc;
     }, {});
-    
-    console.log("designsByCategory", designsByCategory)
-    console.log(Object.entries(designsByCategory));
 
-    // Object.entries returns an array of key value pairs so 
+    // Object.entries returns an array of key value pairs -- allows for iteration
     Object.entries(designsByCategory).forEach(([category, designs]) => {
         container.insertAdjacentHTML('beforeend', `<h1>${category}</h1>`);
    

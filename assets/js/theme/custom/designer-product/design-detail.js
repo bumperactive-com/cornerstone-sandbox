@@ -41,8 +41,6 @@ export default class DesignPage extends PageManager {
       console.error("Error fetching from API, using mock data:", error);
     
       return singleDesignTestData;
-        // id: 1, imgPath: "https://cdn11.bigcommerce.com/s-t8h0eqr68h/images/stencil/original/image-manager/fldems.png?t=1733089981", title: 'Mock Design 1', description: 'For testing only', category: 'Philosophy',  view_url: '/view/1'
-
     }
   }
 
