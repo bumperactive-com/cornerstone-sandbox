@@ -1,11 +1,13 @@
 import PageManager from '../../page-manager.js';
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import ExcalidrawDesigner from '../../../react-components/ExcalidrawDesigner.js';
+// import ExcalidrawDesigner from '../../../react-components/ExcalidrawDesigner.js';
+import CustomExcalidrawDesigner from '../../../react-components/CustomExcalidrawDesigner.js';
 import { defaultModal } from '../../global/modal.js';
 import { api } from '@bigcommerce/stencil-utils';
 import DesignerApiClient from '../util/DesignerApiClient.js';
 import parseDimensions from '../util/parseDimensions.js';
+import '@bumperactive/excalidraw/index.css';
 
 const excalidrawDesignerSelector = '#excalidraw-designer';
 const productViewSelector = '#productViewDesigner';
@@ -14,6 +16,7 @@ const modalContinueBtnSelector = '[data-designer-modal-continue]';
 const modalImgSelector = '#designer-review-modal img';
 const productViewImgSelector = '.productView-large-image';
 const addToCartFormSelector = '[data-cart-item-add]';
+
 
 export default class StickerDesigner extends PageManager {
   constructor(context) {
@@ -29,8 +32,28 @@ export default class StickerDesigner extends PageManager {
 
     this.$productViewDesigner.hide();
     const canvasDimensions = parseDimensions(this.context.canvasExportDimensions);
-    this.renderReactComponent(this.$excalidrawContainer[0], ExcalidrawDesigner, {canvasDimensions: canvasDimensions});
+    this.renderReactComponent(this.$excalidrawContainer[0], CustomExcalidrawDesigner, {canvasDimensions: canvasDimensions});
     this.bindEvents();
+    // console.log($addToCartBtn);
+
+    this.testApiClient();
+  }
+
+  parseDimensions(dimensions) {
+    // Validate input format
+    const regex = /^\d+x\d+$/;
+    if (typeof dimensions !== 'string' || !regex.test(dimensions)) {
+      throw new Error("Invalid format. Expected a string in the format 'widthxheight', e.g., '200x300'.");
+    }
+
+    // Split the string by 'x' to separate width and height
+    const [width, height] = dimensions.split('x');
+
+    // Return as object
+    return {
+      width: parseInt(width, 10),
+      height: parseInt(height, 10)
+    };
   }
 
   renderReactComponent(container, ReactComponent, props = {}) {
@@ -53,13 +76,13 @@ export default class StickerDesigner extends PageManager {
   openDesignerModal(designerImgDataUrl) {
     this.designerImgDataUrl = designerImgDataUrl;
     this.modal = defaultModal();
-    
+
     // get modal template code
     api.getPage('/sticker-designer', {template: 'products/modals/designerReview'}, (err, content) => {
       if (err) {
           return this.modal.updateContent(this.context.previewError);
       }
-      
+
       this.modal.updateContent(content);
       this.updateImageSource(modalImgSelector, designerImgDataUrl);
       this.bindDesignerModalEvents();
@@ -90,7 +113,7 @@ export default class StickerDesigner extends PageManager {
     const $element = $(selector);
     if ($element.length) {
         $element.attr('src', imgDataUrl);
-    } 
+    }
   }
 
   bindProductViewDesignerEvents() {

@@ -47,7 +47,7 @@ module.exports = {
                 },
             },
             {
-              test: /\.scss$/,
+              test: /\.(scss|css)$/,
               use: ['style-loader', 'css-loader', 'sass-loader'],
             },
         ],
@@ -82,6 +82,7 @@ module.exports = {
     resolve: {
         fallback:  { "url": require.resolve("url/") },
         alias: {
+            'roughjs': path.resolve(__dirname, 'node_modules/roughjs'),
             jquery: path.resolve(__dirname, 'node_modules/jquery/dist/jquery.min.js'),
             jstree: path.resolve(__dirname, 'node_modules/jstree/dist/jstree.min.js'),
             lazysizes: path.resolve(__dirname, 'node_modules/lazysizes/lazysizes.min.js'),
