@@ -3,6 +3,7 @@ import createDesignPageHtml from '../templates/design-detail-template.js';
 import singleDesignTestData from '../api-test-data/design.json';
 
 const designPageContainerSelector = ".design-detail-container";
+const baseApiUrl = 'https://bac-excalidraw-db-staging-f05fe4a443a2.herokuapp.com/[designs-endpoint]';
 
 export default class DesignPage extends PageManager {
   constructor(context) {
@@ -32,7 +33,7 @@ export default class DesignPage extends PageManager {
 
   async fetchDesignDetails(designId) {
     try {
-      const apiUrl = `https://bac-excalidraw-db-staging-f05fe4a443a2.herokuapp.com/[designs-endpoint]/${designId}`;
+      const apiUrl = `${baseApiUrl}/${designId}`;
       const response = await fetch(apiUrl);
       const data = await response.json();
       return data;

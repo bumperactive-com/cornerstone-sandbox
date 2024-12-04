@@ -3,6 +3,7 @@ import createMyDesignsHtml from '../templates/design-gallery-template.js';
 import allDesignsTestData from '../api-test-data/customer-designs.json';
 
 const myDesignsContainerSelector = '.design-gallery-container';
+const baseApiUrl = 'https://bac-excalidraw-db-staging-f05fe4a443a2.herokuapp.com/[designs-endpoint]';
 
 export default class MyDesigns extends PageManager {
   constructor(context) {
@@ -20,8 +21,7 @@ export default class MyDesigns extends PageManager {
   // fetching customer data (with fallback to mock data)
   async fetchCustomerData() {
     try {
-      const apiUrl = 'https://bac-excalidraw-db-staging-f05fe4a443a2.herokuapp.com/[designs-endpoint]';
-      const response = await fetch(apiUrl);
+      const response = await fetch(baseApiUrl);
       const data = await response.json();
       return data;
     } catch (error) {
