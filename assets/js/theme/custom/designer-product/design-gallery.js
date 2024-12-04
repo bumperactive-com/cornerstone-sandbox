@@ -1,8 +1,8 @@
 import PageManager from '../../page-manager.js';
-import createMyDesignsHtml from '../templates/my-designs-template.js';
-import customerDesigns from '../api-test-data/customer-designs.json';
+import createMyDesignsHtml from '../templates/design-gallery-template.js';
+import allDesignsTestData from '../api-test-data/customer-designs.json';
 
-const myDesignsContainerSelector = '.my-designs-container';
+const myDesignsContainerSelector = '.design-gallery-container';
 
 export default class MyDesigns extends PageManager {
   constructor(context) {
@@ -13,7 +13,6 @@ export default class MyDesigns extends PageManager {
 
   onReady() {
     console.log(this.context);
-    console.log("these are the customer designs", customerDesigns);
     console.log("customerName", this.customerName, "customerId", this.customerId);
     this.fetchCustomerData().then(customerData => {
       this.renderDesigns(customerData);
@@ -31,7 +30,7 @@ export default class MyDesigns extends PageManager {
       console.error("Error fetching customer data, using mock data", error);
       
       return {
-        designs: customerDesigns
+        designs: allDesignsTestData
       };
     }
   }
@@ -52,6 +51,7 @@ export default class MyDesigns extends PageManager {
     
     console.log("designsByCategory", designsByCategory)
 
+    //Object.entries returns an array of key value pairs so 
     Object.entries(designsByCategory).forEach(([category, designs]) => {
         container.insertAdjacentHTML('beforeend', `<h1>${category}</h1>`);
    

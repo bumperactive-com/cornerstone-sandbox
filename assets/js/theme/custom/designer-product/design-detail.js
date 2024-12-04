@@ -1,7 +1,8 @@
 import PageManager from '../../page-manager.js';
-import createDesignPageHtml from '../templates/design-page-template.js';
+import createDesignPageHtml from '../templates/design-detail-template.js';
+import singleDesignTestData from '../api-test-data/design.json';
 
-const designPageContainerSelector = ".design-page-container";
+const designPageContainerSelector = ".design-detail-container";
 
 export default class DesignPage extends PageManager {
   constructor(context) {
@@ -39,13 +40,14 @@ export default class DesignPage extends PageManager {
     } catch (error) {
       console.error("Error fetching from API, using mock data:", error);
     
-      return {
-        id: 1, imgPath: "https://cdn11.bigcommerce.com/s-t8h0eqr68h/images/stencil/original/image-manager/fldems.png?t=1733089981", title: 'Mock Design 1', description: 'For testing only', category: 'Philosophy',  view_url: '/view/1'
-      };
+      return singleDesignTestData;
+        // id: 1, imgPath: "https://cdn11.bigcommerce.com/s-t8h0eqr68h/images/stencil/original/image-manager/fldems.png?t=1733089981", title: 'Mock Design 1', description: 'For testing only', category: 'Philosophy',  view_url: '/view/1'
+
     }
   }
 
   renderDesignPage(designData) {
+    console.log("this is the design data", designData);
     const designPageContainer = document.querySelector(designPageContainerSelector);
     if (designPageContainer) {
       const designHtml = createDesignPageHtml(designData);

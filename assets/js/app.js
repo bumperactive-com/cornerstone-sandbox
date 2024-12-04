@@ -59,14 +59,14 @@ const customClasses = {
   'pages/custom/product/sticker-designer': () => import('./theme/custom/designer-product/sticker-designer'),
 
   // Windows
-  'pages\\custom\\page\\my-designs': () => import('./theme/custom/designer-product/my-designs'),
+  'pages\\custom\\page\\design-gallery': () => import('./theme/custom/designer-product/design-gallery'),
   // Mac/Linux
-  'pages/custom/page/my-designs': () => import('./theme/custom/designer-product/my-designs'),
+  'pages/custom/page/design-gallery': () => import('./theme/custom/designer-product/design-gallery'),
 
   // Windows
-  'pages\\custom\\page\\design-page': () => import('./theme/custom/designer-product/design-page'),
+  'pages\\custom\\page\\design-detail': () => import('./theme/custom/designer-product/design-detail'),
   // Mac/Linux
-  'pages/custom/page/design-page': () => import('./theme/custom/designer-product/design-page')
+  'pages/custom/page/design-detail': () => import('./theme/custom/designer-product/design-detail')
 };
 
 /**
