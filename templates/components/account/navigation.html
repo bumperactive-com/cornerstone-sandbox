@@ -3,7 +3,7 @@
         <li class="navBar-item {{#if account_page '===' 'orders'}}is-active{{/if}}">
             <a class="navBar-action" href="{{urls.account.orders.all}}">{{lang 'account.nav.orders'}}</a>
         </li>
-        <li class="navBar-item">
+        <li class="navBar-item {{#if account_page '===' 'my_designs'}}is-active{{/if}}">
             <a class="navBar-action" href="/design-gallery">{{lang 'account.nav.my_designs'}}</a>
         </li>
         {{#if settings.returns_enabled}}
