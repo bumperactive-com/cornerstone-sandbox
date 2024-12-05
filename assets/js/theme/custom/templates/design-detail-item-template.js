@@ -1,4 +1,4 @@
-export default function createDesignPageHtml(designData) {
+export default function createDetailItemHtml(designData) {
     return `
     <div class="design-item">
           <p><strong>Title:</strong> ${designData.title}</p>
@@ -8,3 +8,4 @@ export default function createDesignPageHtml(designData) {
         </div>
     `;
   }
+  

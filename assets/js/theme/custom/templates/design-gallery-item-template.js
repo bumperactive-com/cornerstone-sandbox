@@ -1,4 +1,4 @@
-export default function createMyDesignsHtml(design) {
+export default function createGalleryItemHtml(design) {
     return `
       <div class="design-item">
         <p><strong>Title:</strong> ${design.title}</p>

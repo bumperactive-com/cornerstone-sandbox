@@ -1,5 +1,5 @@
 import PageManager from '../../page-manager.js';
-import createMyDesignsHtml from '../templates/design-gallery-template.js';
+import createGalleryItemHtml from '../templates/design-gallery-item-template.js';
 import allDesignsTestData from '../api-test-data/customer-designs.json';
 
 const myDesignsContainerSelector = '.design-gallery-container';
@@ -53,7 +53,7 @@ export default class MyDesigns extends PageManager {
         container.insertAdjacentHTML('beforeend', `<h1>${category}</h1>`);
    
         designs.forEach(design => {
-            const designHtml = createMyDesignsHtml(design);
+            const designHtml = createGalleryItemHtml(design);
             container.insertAdjacentHTML('beforeend', designHtml);
         });
     });

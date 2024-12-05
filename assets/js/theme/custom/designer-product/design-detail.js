@@ -1,5 +1,5 @@
 import PageManager from '../../page-manager.js';
-import createDesignPageHtml from '../templates/design-detail-template.js';
+import createDetailItemHtml from '../templates/design-detail-item-template.js';
 import singleDesignTestData from '../api-test-data/design.json';
 
 const designPageContainerSelector = ".design-detail-container";
@@ -47,7 +47,7 @@ export default class DesignPage extends PageManager {
   renderDesignPage(designData) {
     const designPageContainer = document.querySelector(designPageContainerSelector);
     if (designPageContainer) {
-      const designHtml = createDesignPageHtml(designData);
+      const designHtml = createDetailItemHtml(designData);
       designPageContainer.innerHTML = designHtml;
     } else {
       console.error("Design page container not found.");
