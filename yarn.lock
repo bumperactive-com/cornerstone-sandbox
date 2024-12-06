@@ -995,9 +995,9 @@
   integrity sha512-s3jaWicZd0pkP0jf5ysyHUI/RE7MHos6qlToFcGWXVp+ykHOy77OUMrfbgJ9it2C5bow7OIQwYYaHjk9XlBQ2A==
 
 "@bumperactive/excalidraw@^0.18.4":
-  version "0.18.4"
-  resolved "https://registry.yarnpkg.com/@bumperactive/excalidraw/-/excalidraw-0.18.4.tgz#2bf2ae22ce2759d1faa258cfc3f7a346e0685e9a"
-  integrity sha512-yfqFoDRg4ceONnGWAks8KumO9fSZ8B7zqF4YjZVkF8zqWvtbQlnsu120elRVxr21rF5fORH3rpV7S7ffidvW1A==
+  version "0.18.5"
+  resolved "https://registry.yarnpkg.com/@bumperactive/excalidraw/-/excalidraw-0.18.5.tgz#b16eafa6509c08547248c87ec4d2614da5016d3e"
+  integrity sha512-dcYWDMuU8YlW4VpOCGI0FmVx2Gayf58rA2ld9ewV6ZysYYy3JRJDed/dc9MWmzcPQ2q52g5bE/TcBnhxvB0WZw==
   dependencies:
     "@braintree/sanitize-url" "6.0.2"
     "@excalidraw/laser-pointer" "1.3.1"
