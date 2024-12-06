@@ -20,25 +20,21 @@ export default class MyDesigns extends PageManager {
   // fetching customer data (with fallback to mock data)
   async fetchCustomerData() {
     try {
-      const urlWithCustomerId = `${baseApiUrl}${this.customerId}`;
+      // const urlWithCustomerId = `${baseApiUrl}${this.customerId}`;
+      const urlWithCustomerId = `${baseApiUrl}1`;  //testing purposes for customer ID of 1
       const response = await fetch(urlWithCustomerId);
       const data = await response.json();
       return data;
     } catch (error) {
       console.error("Error fetching customer data, using mock data", error);
-      
-      // returns object with the property 'designs'.  the response data is in array format
-      return {
-        designs: allDesignsTestData
-      };
+      return allDesignsTestData;
     }
   }
 
   renderDesigns(customerData) {
+    console.log(customerData);
     const container = document.querySelector(myDesignsContainerSelector);
-    const designsByCategory = customerData.designs;
-
-      designsByCategory.forEach(design => {
+    customerData.forEach(design => {
         const designHtml = createGalleryItemHtml(design);
         container.insertAdjacentHTML('beforeend', designHtml);
       });
