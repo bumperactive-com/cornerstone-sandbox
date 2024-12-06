@@ -3,12 +3,11 @@ import createGalleryItemHtml from '../templates/design-gallery-item-template.js'
 import allDesignsTestData from '../api-test-data/customer-designs.json';
 
 const myDesignsContainerSelector = '.design-gallery-container';
-const baseApiUrl = 'https://bac-excalidraw-db-staging-f05fe4a443a2.herokuapp.com/[designs-endpoint]';
+const baseApiUrl = 'https://bac-excalidraw-db-staging-f05fe4a443a2.herokuapp.com/designs?customerId=';
 
 export default class MyDesigns extends PageManager {
   constructor(context) {
     super(context);
-    this.customerName = context.customerName;
     this.customerId = context.customerId;
   }
 
@@ -21,7 +20,8 @@ export default class MyDesigns extends PageManager {
   // fetching customer data (with fallback to mock data)
   async fetchCustomerData() {
     try {
-      const response = await fetch(baseApiUrl);
+      const urlWithCustomerId = `${baseApiUrl}${this.customerId}`;
+      const response = await fetch(urlWithCustomerId);
       const data = await response.json();
       return data;
     } catch (error) {

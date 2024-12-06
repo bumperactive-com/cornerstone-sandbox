@@ -3,12 +3,12 @@ import createDetailItemHtml from '../templates/design-detail-item-template.js';
 import singleDesignTestData from '../api-test-data/design.json';
 
 const designPageContainerSelector = ".design-detail-container";
-const baseApiUrl = 'https://bac-excalidraw-db-staging-f05fe4a443a2.herokuapp.com/[designs-endpoint]';
 
 export default class DesignPage extends PageManager {
   constructor(context) {
     super(context);
     this.context = context;
+    this.customerId = context.customerId;
   }
 
   onReady() {
@@ -33,7 +33,7 @@ export default class DesignPage extends PageManager {
 
   async fetchDesignDetails(designId) {
     try {
-      const apiUrl = `${baseApiUrl}/${designId}`;
+      const apiUrl = `bac-excalidraw-db-staging-f05fe4a443a2.herokuapp.com/designs/${designId}?customerId=${this.customerId}`;
       const response = await fetch(apiUrl);
       const data = await response.json();
       return data;
