@@ -22,6 +22,9 @@
 }
   
 .design-item {
+    display: flex;  
+    flex-direction: column;
+    text-align: center;
     background: #fff;
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -34,10 +37,11 @@
     }
 
     img {
-        width: 100%;
+        width: 90%;
+        margin: auto;
         height: auto;
         display: block;
-        border-bottom: 1px solid #ddd;
+        border: 1px solid black;
     }
 
     p {
