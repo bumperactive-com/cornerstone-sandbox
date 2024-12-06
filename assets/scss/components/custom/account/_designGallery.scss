@@ -28,6 +28,11 @@
     box-shadow: 0 4px 6px gray;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 
+    .design-title {
+        font-size: 20px;
+        text-decoration: underline;
+    }
+
     img {
         width: 100%;
         height: auto;
