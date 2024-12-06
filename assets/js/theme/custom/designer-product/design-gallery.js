@@ -36,26 +36,11 @@ export default class MyDesigns extends PageManager {
 
   renderDesigns(customerData) {
     const container = document.querySelector(myDesignsContainerSelector);
-    container.innerHTML = '';
+    const designsByCategory = customerData.designs;
 
-    // groups the designs by category
-    const designsByCategory = customerData.designs.reduce((acc, design) => {
-        const category = design.category; 
-        if (!acc[category]) {
-            acc[category] = [];
-        }
-        acc[category].push(design);
-        return acc;
-    }, {});
-
-    // Object.entries returns an array of key value pairs -- allows for iteration
-    Object.entries(designsByCategory).forEach(([category, designs]) => {
-        container.insertAdjacentHTML('beforeend', `<h1>${category}</h1>`);
-   
-        designs.forEach(design => {
-            const designHtml = createGalleryItemHtml(design);
-            container.insertAdjacentHTML('beforeend', designHtml);
-        });
-    });
+      designsByCategory.forEach(design => {
+        const designHtml = createGalleryItemHtml(design);
+        container.insertAdjacentHTML('beforeend', designHtml);
+      });
+    }
   }
-}

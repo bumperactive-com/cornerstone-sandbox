@@ -7,7 +7,7 @@
   <h2 class="page-heading">My Designs</h2>
   {{> components/account/navigation account_page='my_designs' customer=customer}}
 
-  <div class="account account--fixedLarge">
+  <div class="account account--fixedLarge design-gallery-account">
     <div class="account-body">
       {{#if customer.error}}
         {{> components/common/alert/alert-error customer.error}}
