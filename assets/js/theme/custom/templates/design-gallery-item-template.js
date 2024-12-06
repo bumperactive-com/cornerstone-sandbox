@@ -13,7 +13,7 @@ export default function createGalleryItemHtml(design) {
         <a href="/design-gallery/design-detail?id=${design.id}" 
            class="button button--small view-button" 
            data-id="${design.id}">
-          View
+          View More Details
         </a>
       </p>
     </div>
