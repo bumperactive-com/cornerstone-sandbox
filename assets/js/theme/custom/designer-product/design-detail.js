@@ -33,7 +33,7 @@ export default class DesignPage extends PageManager {
 
   async fetchDesignDetails(designId) {
     try {
-      const apiUrl = `bac-excalidraw-db-staging-f05fe4a443a2.herokuapp.com/designs/${designId}?customerId=${this.customerId}`;
+      const apiUrl = `https://bac-excalidraw-db-staging-f05fe4a443a2.herokuapp.com/designs/${designId}`;
       const response = await fetch(apiUrl);
       const data = await response.json();
       return data;
