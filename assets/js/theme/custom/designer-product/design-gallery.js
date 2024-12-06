@@ -58,5 +58,4 @@ export default class MyDesigns extends PageManager {
         });
     });
   }
-
 }
