@@ -55,25 +55,31 @@
         color: #555;
         font-weight: bold;
     }
-
-    .view-button {
-        background-color: #69e97a;
-        text-align: center;
-        color: #000;
-        font-weight: 700;
-        -webkit-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-        border-color: #ccc;
-    
-        &:hover {
-            opacity: .8;
-            background-color: #69e97a;
-        }
-    }
 }
 
 .design-actions {
     text-align: center;
 }
 
-  
+.design-detail-container {
+    margin-bottom: 3rem;
+}
+
+.design-detail-container img {
+    margin-bottom: 3rem;
+}
+
+.view-button {
+    background-color: #69e97a;
+    text-align: center;
+    color: #000;
+    font-weight: 700;
+    box-shadow: gray 0px 3px 8px;
+    border-color: #69e97a;
+
+    &:hover, &:active, &:focus {
+        background-color: #69e97a;
+        border-color: #69e97a;
+        outline: none !important;
+    }
+}

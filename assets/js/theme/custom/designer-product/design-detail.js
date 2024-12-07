@@ -36,6 +36,7 @@ export default class DesignPage extends PageManager {
       const apiUrl = `https://bac-excalidraw-db-staging-f05fe4a443a2.herokuapp.com/designs/${designId}`;
       const response = await fetch(apiUrl);
       const data = await response.json();
+      
       return data;
     } catch (error) {
       console.error("Error fetching from API, using mock data:", error);
