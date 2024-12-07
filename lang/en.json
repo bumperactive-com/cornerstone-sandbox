@@ -1041,5 +1041,13 @@
         "privacy_policy": "Privacy Policy",
         "allow_category_tracking": "Allow [CATEGORY_NAME] tracking",
         "disallow_category_tracking": "Disallow [CATEGORY_NAME] tracking"
+    },
+    "custom": {
+        "product_designer": {
+            "account": {
+                "my_designs": "My Designs",
+                "go_back_button": "Go Back to My Designs"
+            }
+        }
     }
 }

@@ -3,14 +3,17 @@
         <li class="navBar-item {{#if account_page '===' 'orders'}}is-active{{/if}}">
             <a class="navBar-action" href="{{urls.account.orders.all}}">{{lang 'account.nav.orders'}}</a>
         </li>
+        <li class="navBar-item {{#if account_page '===' 'my_designs'}}is-active{{/if}}">
+            <a class="navBar-action" href="/design-gallery">{{lang 'custom.product_designer.account.my_designs'}}</a>
+        </li>
         {{#if settings.returns_enabled}}
-            <li class="navBar-item {{#if account_page '===' 'returns'}}is-active{{/if}}">
+            <li class="navBar-item">
                 <a class="navBar-action" href="{{urls.account.returns}}">{{lang 'account.nav.returns'}}</a>
             </li>
         {{/if}}
-        <li class="navBar-item {{#if account_page '===' 'messages'}}is-active{{/if}}">
+        <!-- <li class="navBar-item {{#if account_page '===' 'messages'}}is-active{{/if}}">
             <a class="navBar-action" href="{{urls.account.inbox}}">{{lang 'account.nav.messages' num_new_messages=customer.num_new_messages}}</a>
-        </li>
+        </li> -->
         <li class="navBar-item {{#if account_page '===' 'addresses'}}is-active{{/if}}">
             <a class="navBar-action" href="{{urls.account.addresses}}">{{lang 'account.nav.addresses'}}</a>
         </li>
