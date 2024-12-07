@@ -24,10 +24,9 @@ export default class MyDesigns extends PageManager {
     const customerId = isTesting ? testCustomerId : this.customerId; 
     const urlWithCustomerId = `${baseApiUrl}${customerId}`;
     try {
-      // const response = await fetch(urlWithCustomerId);
-      // const data = await response.json();
-      // return data;
-      return allDesignsTestData;
+      const response = await fetch(urlWithCustomerId);
+      const data = await response.json();
+      return data;
     } catch (error) {
       console.error("Error fetching customer data, using mock data", error);
       return allDesignsTestData;
