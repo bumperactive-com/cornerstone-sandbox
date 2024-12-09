@@ -1,0 +1,106 @@
+// =============================================================================
+// DESIGN GALLERY AND DETAIL PAGE STYLES
+// =============================================================================
+
+.account--fixedLarge.design-gallery-account {
+  width: $design-gallery-width;
+  margin: $design-gallery-margin;
+}
+
+.design-gallery-container,
+.design-detail-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: $design-gallery-gap;
+  padding: $design-gallery-padding;
+
+  @media (max-width: 800px) {
+    grid-template-columns: 1fr;
+
+    .design-gallery--item,
+    .design-detail--item {
+      margin-bottom: $design-gallery-gap;
+    }
+  }
+}
+
+.design-detail--item,
+.design-gallery--item {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  background: $design-gallery-bg-color;
+  border: 1px solid $design-gallery-border-color;
+  border-radius: $design-gallery-border-radius;
+  box-shadow: $design-gallery-box-shadow;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  .design-detail--title,
+  .design-gallery--title {
+    font-size: $design-gallery-font-size-title;
+    text-decoration: underline;
+  }
+
+  .design-detail--image,
+  .design-gallery--image {
+    width: $design-gallery-image-width;
+    margin: auto;
+    height: auto;
+    display: block;
+    border: 1px solid $design-gallery-image-border-color;
+  }
+
+  p {
+    margin: 10px 15px;
+    color: $design-gallery-text-color;
+    font-size: $design-gallery-font-size-text;
+    line-height: $design-gallery-font-size-heading;
+  }
+
+  p strong {
+    color: #555;
+    font-weight: $design-gallery-font-weight-bold;
+  }
+}
+
+.design-gallery--actions {
+  text-align: $design-gallery-actions-align;
+}
+
+.design-detail-container {
+  margin-bottom: $design-gallery-image-margin-bottom;
+
+  .design-detail--image {
+    margin-bottom: $design-gallery-image-margin-bottom;
+  }
+}
+
+.design-gallery--button {
+  background-color: $design-gallery-button-bg-color;
+  text-align: center;
+  color: $design-gallery-button-text-color;
+  font-weight: $design-gallery-button-font-weight;
+  box-shadow: $design-gallery-button-box-shadow;
+  border-color: $design-gallery-button-border-color;
+
+  &:hover, &:active, &:focus {
+    background-color: $design-gallery-button-hover-bg-color;
+    border-color: $design-gallery-button-hover-border-color;
+    outline: none !important;
+  }
+}
+
+.design-detail--button {
+  background-color: $design-gallery-button-bg-color;
+  text-align: center;
+  color: $design-gallery-button-text-color;
+  font-weight: $design-gallery-button-font-weight;
+  box-shadow: $design-gallery-button-box-shadow;
+  border-color: $design-gallery-button-border-color;
+
+  &:hover, &:active, &:focus {
+    background-color: $design-gallery-button-hover-bg-color;
+    border-color: $design-gallery-button-hover-border-color;
+    outline: none !important;
+  }
+}

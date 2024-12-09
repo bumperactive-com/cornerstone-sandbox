@@ -1,0 +1,22 @@
+{{inject 'customerName' customer.name}}
+{{inject 'customerId' customer.id}}
+{{inject 'account_page' 'my_designs'}}
+
+{{#partial "page"}}
+  {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+  <h2 class="page-heading">My Designs</h2>
+  {{> components/account/navigation account_page='my_designs' customer=customer}}
+
+  <div class="account account--fixedLarge design-gallery-account">
+    <div class="account-body">
+      {{#if customer.error}}
+        {{> components/common/alert/alert-error customer.error}}
+      {{/if}}
+      {{#if customer.success}}
+        {{> components/common/alert/alert-success customer.success}}
+      {{/if}}
+      <section class="design-gallery-container"></section>
+    </div>
+  </div>
+{{/partial}}
+{{> layout/base}}
