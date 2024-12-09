@@ -16,6 +16,7 @@ const modalContinueBtnSelector = '[data-designer-modal-continue]';
 const modalImgSelector = '#designer-review-modal img';
 const productViewImgSelector = '.productView-large-image';
 const addToCartFormSelector = '[data-cart-item-add]';
+const productImageUrlFieldInput = '#designer-meta-fields .form-field:last-child input';
 
 
 export default class StickerDesigner extends PageManager {
@@ -27,6 +28,7 @@ export default class StickerDesigner extends PageManager {
   onReady() {
     this.$excalidrawContainer = $(excalidrawDesignerSelector);
     this.$productViewDesigner = $(productViewSelector);
+    this.$productImageUrlInput = $(productImageUrlFieldInput);
     this.designerImgDataUrl = null;
     this.modal = null;
 
@@ -105,6 +107,9 @@ export default class StickerDesigner extends PageManager {
         this.$productViewDesigner.show();
         this.modal.close();
         this.bindProductViewDesignerEvents();
+        
+        this.$productImageUrlInput.hide();
+        this.$productImageUrlInput.val(this.designerImgDataUrl)
       }
     });
   }
