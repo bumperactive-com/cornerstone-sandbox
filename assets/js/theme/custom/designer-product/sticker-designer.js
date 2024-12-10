@@ -1,12 +1,12 @@
 import PageManager from '../../page-manager.js';
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-// import ExcalidrawDesigner from '../../../react-components/ExcalidrawDesigner.js';
 import CustomExcalidrawDesigner from '../../../react-components/CustomExcalidrawDesigner.js';
 import { defaultModal } from '../../global/modal.js';
 import { api } from '@bigcommerce/stencil-utils';
 import DesignerApiClient from '../util/DesignerApiClient.js';
 import parseDimensions from '../util/parseDimensions.js';
+import chunkString from '../util/chunk-string.js'
 import '@bumperactive/excalidraw/index.css';
 
 const excalidrawDesignerSelector = '#excalidraw-designer';
@@ -16,8 +16,7 @@ const modalContinueBtnSelector = '[data-designer-modal-continue]';
 const modalImgSelector = '#designer-review-modal img';
 const productViewImgSelector = '.productView-large-image';
 const addToCartFormSelector = '[data-cart-item-add]';
-const productImageUrlFieldInput = '#designer-meta-fields .form-field:last-child input';
-
+const optionFormFields = '#designer-meta-fields .form-field';
 
 export default class StickerDesigner extends PageManager {
   constructor(context) {
@@ -28,7 +27,7 @@ export default class StickerDesigner extends PageManager {
   onReady() {
     this.$excalidrawContainer = $(excalidrawDesignerSelector);
     this.$productViewDesigner = $(productViewSelector);
-    this.$productImageUrlInput = $(productImageUrlFieldInput);
+    this.$optionFormFields = $(optionFormFields);
     this.designerImgDataUrl = null;
     this.modal = null;
 
@@ -36,9 +35,7 @@ export default class StickerDesigner extends PageManager {
     const canvasDimensions = parseDimensions(this.context.canvasExportDimensions);
     this.renderReactComponent(this.$excalidrawContainer[0], CustomExcalidrawDesigner, {canvasDimensions: canvasDimensions});
     this.bindEvents();
-    // console.log($addToCartBtn);
 
-    this.testApiClient();
   }
 
   parseDimensions(dimensions) {
@@ -107,9 +104,7 @@ export default class StickerDesigner extends PageManager {
         this.$productViewDesigner.show();
         this.modal.close();
         this.bindProductViewDesignerEvents();
-        
-        this.$productImageUrlInput.hide();
-        this.$productImageUrlInput.val(this.designerImgDataUrl)
+        this.handleImageUrlFields();
       }
     });
   }
@@ -124,30 +119,26 @@ export default class StickerDesigner extends PageManager {
   bindProductViewDesignerEvents() {
     this.$addToCartForm = $(addToCartFormSelector);
     this.$addToCartForm.on('submit', () => {
-      let metaDataObj = this.getFormFields(this.$addToCartForm);
-
-      // TEST CODE
-      this.testApiClient( this.apiClient.getMockImagesData(this.designerImgDataUrl) );
     })
   }
 
-  // To-do: get form field data
-  getFormFields($form) {
-    const data = [];
-    $form.find('.form-field').each(function() {
-        const $field = $(this);
-        const fieldValue = data[$field.attr('name')] = $field.val();
-        data.push(fieldValue);
-    });
-    return data;
-  }
+  handleImageUrlFields() {
+    const imgDataUrlChunks = chunkString(this.designerImgDataUrl, 60000);
 
-  async testApiClient(data) {
-    const sendImagesResponse = await this.apiClient.sendImagesData(data);
-    // console.log('Send images response: ', sendImagesResponse);
+    this.$optionFormFields.each((index, field) => {
+      const $field = $(field);
+      const $fieldLabel = $field.find('label');
+      const $fieldInput = $field.find('input');
+     
+      if ( $fieldLabel.text().toLowerCase().includes('image url') ) {
+        $field.hide();
 
-    const getImagesResponse = await this.apiClient.getImagesData();
-    // console.log('Get images response: ', getImagesResponse);
+        if (imgDataUrlChunks[0]) {
+          $fieldInput.val(imgDataUrlChunks.shift());
+        }
+      }
+    })
   }
+  
 }
 
