@@ -124,7 +124,6 @@ export default class StickerDesigner extends PageManager {
 
   handleImageUrlFields() {
     const imgDataUrlChunks = chunkString(this.designerImgDataUrl, 60000);
-    console.log(imgDataUrlChunks);
 
     this.$optionFormFields.each((index, field) => {
       const $field = $(field);
@@ -132,7 +131,7 @@ export default class StickerDesigner extends PageManager {
       const $fieldInput = $field.find('input');
      
       if ( $fieldLabel.text().toLowerCase().includes('image url') ) {
-        console.log(`Setting value for field ${index}:`, imgDataUrlChunks[index]);
+        $field.hide();
 
         if (imgDataUrlChunks[0]) {
           $fieldInput.val(imgDataUrlChunks.shift());
