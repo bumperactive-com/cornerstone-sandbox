@@ -994,7 +994,7 @@
   resolved "https://registry.yarnpkg.com/@braintree/sanitize-url/-/sanitize-url-6.0.4.tgz#923ca57e173c6b232bbbb07347b1be982f03e783"
   integrity sha512-s3jaWicZd0pkP0jf5ysyHUI/RE7MHos6qlToFcGWXVp+ykHOy77OUMrfbgJ9it2C5bow7OIQwYYaHjk9XlBQ2A==
 
-"@bumperactive/excalidraw@^0.18.4":
+"@bumperactive/excalidraw@^0.18.5":
   version "0.18.5"
   resolved "https://registry.yarnpkg.com/@bumperactive/excalidraw/-/excalidraw-0.18.5.tgz#b16eafa6509c08547248c87ec4d2614da5016d3e"
   integrity sha512-dcYWDMuU8YlW4VpOCGI0FmVx2Gayf58rA2ld9ewV6ZysYYy3JRJDed/dc9MWmzcPQ2q52g5bE/TcBnhxvB0WZw==
