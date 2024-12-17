@@ -45,6 +45,17 @@ module.exports = {
                   exposes: ["$"],
                 },
             },
+            {
+                test: /\.(png|jpe?g|gif|svg|bmp|tiff|webp|psd|ai|eps)$/i,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: 'assets/img/[name].[ext]',
+                        },
+                    },
+                ],
+            },
         ],
     },
     output: {
