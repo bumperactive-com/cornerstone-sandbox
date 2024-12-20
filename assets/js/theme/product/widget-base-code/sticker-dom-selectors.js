@@ -1,6 +1,7 @@
 // DOM selectors for sticker bulk custom product pages
 
 const SELECTORS = {
+    UPLOAD_FILE_SECTION: '[data-product-attribute="input-file"] input[type="file"]',
     STICKER_SECTION_LABEL_ID: '#stickerFinishSection .form-label--inlineSmall',
     STICKER_INFO_IMAGE_ID: '#stickerInfoImage',
     PRODUCT_THUMBNAILS: '.productView-thumbnails',

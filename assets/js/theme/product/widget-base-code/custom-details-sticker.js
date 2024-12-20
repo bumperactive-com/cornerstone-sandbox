@@ -84,7 +84,8 @@ import radioButtonEvents from '../../widget-services/sticker-widget/radio-button
 
 export default function customDetailsSticker() {
     const hiddenElements = stickerWidgetHTML.hiddenElements;
-    const uploadFile = document.querySelector(SELECTORS.UPLOAD_FILE_ID);
+    const uploadFile = document.querySelector(SELECTORS.UPLOAD_FILE_SECTION);
+    console.log("yoo", uploadFile);
     const addToCart = document.querySelector(SELECTORS.FORM_ACTION_ADD_TO_CART);
 
     initializeStickerWidget();
