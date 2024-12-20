@@ -1,5 +1,11 @@
 {{inject 'outOfStockDefaultMessage' (lang 'products.out_of_stock_default_message')}}
 
+{{inject "productPrice" product.price.without_tax.value}}
+{{inject "bulkDiscountRates" product.bulk_discount_rates}}
+{{inject "productOptions" product.options}}
+{{inject "productUrl" product.url}}
+{{inject "cart" cart.items}}
+
 <div class="productView"
     data-event-type="product"
     data-entity-id="{{product.id}}"
@@ -128,7 +134,7 @@
                 {{#if settings.show_product_reviews}}
                     <a href="{{product.url}}{{#if is_ajax}}#write_review{{/if}}"
                        class="productView-reviewLink productView-reviewLink--new"
-                       {{#unless is_ajax}}data-reveal-id="modal-designer-preview"{{/unless}}
+                       {{#unless is_ajax}}data-reveal-id="modal-review-form"{{/unless}}
                        role="button"
                     >
                        {{lang 'products.reviews.new'}}
@@ -262,6 +268,24 @@
                 {{> components/common/wishlist-dropdown}}
             {{/if}}
         </div>
+
+        <img id="unionImage" src="{{cdn 'img/unionLabel-info.png'}}">
+        <img id="stickerInfoImage" src="{{cdn 'img/stickerFinish-info.png'}}">
+        <div id="nextBackBtnContainer">
+            <button id="backButton1" style="display:none;">Back </button>
+            <button id="backButton2" style="display:none;">Back </button>
+            <button id="backButton3" style="display:none;">Back </button>
+            <button id="backButton4" style="display:none;">Back </button>
+            <button id="nextButton6" style="display:none;">Next </button>
+            <p id="nextButtonText"></p>
+            <button id="nextButton2" style="display:none;">Next</button>
+            <button id="nextButton3" style="display:none;">Next </button>
+            <button id="nextButton4" style="display:none;">Next </button>
+            <button id="nextButton5" style="display:none;">Next </button>
+            <button id="nextButton6" style="display:none;">Next </button>
+        </div>
+        </div>
+
         {{> components/common/share url=product.url}}
     </section>
 
@@ -279,3 +303,47 @@
     <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modal-header-title"></div>
     <div class="loadingOverlay"></div>
 </div>
+
+
+<script>
+    document.getElementById("nextButton2").style.display = "none";
+    document.getElementById("nextButton3").style.display = "none";
+    document.getElementById("nextButton4").style.display = "none";
+    document.getElementById("nextButton5").style.display = "none";
+    document.getElementById("nextButton6").style.display = "none";
+</script>
+
+
+<!-- Removes Prices only for products with Custom in the name.  Changes Add to cart button for non custom products.  Also hides product description-->
+<script>
+    var title = document.querySelectorAll(".productView-title")[0].innerText;
+    var price = document.querySelectorAll(".price")[0];
+    var nextButton = document.getElementById("nextButton");
+    var backButton = document.getElementById("backButton");
+  
+      if (title.includes("Custom")) {
+          price.style.display = "none";
+          const prodDesc = document.querySelectorAll(".productView-description")[0];
+  
+          if(window.location.href.includes("custom")) {
+              prodDesc.style.display = "none";
+          }
+  
+      } else {
+          const productTitle = document.getElementsByClassName("productView-product")[0].getElementsByTagName('h1')[0].innerText;    
+          const addCartBtn = document.getElementById("form-action-addToCart");
+          addCartBtn.style.backgroundColor = "#00AFB9";
+          addCartBtn.style.color = "#ffffff";
+  
+          price.style.display = "block";
+          // // nextButton.style.display = "none";
+          // backButton.style.display = "none";
+      }
+  </script>
+  
+  
+  <script>
+      var jsContext = JSON.parse({{jsContext}});
+      console.log('jscontext', jsContext);
+  </script>
+  
