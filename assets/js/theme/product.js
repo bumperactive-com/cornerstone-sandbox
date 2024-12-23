@@ -8,6 +8,8 @@ import ProductDetails from './common/product-details';
 import videoGallery from './product/video-gallery';
 import { classifyForm } from './common/utils/form-utils';
 import modalFactory from './global/modal';
+import customDetails from './product/custom-details.js';
+import customDetailsSticker from './product/widget-base-code/custom-details-sticker.js';
 
 export default class Product extends PageManager {
     constructor(context) {
@@ -19,6 +21,19 @@ export default class Product extends PageManager {
     }
 
     onReady() {
+        customDetails();
+        
+        if (window.location.href.includes("custom")) {
+            switch (true) {
+                case window.location.href.includes("stickers"):
+                case window.location.href.includes("sticker"):
+                    customDetailsSticker();
+                    break;
+                default:
+                    break;
+            }
+        }
+        
         // Listen for foundation modal close events to sanitize URL after review.
         $(document).on('close.fndtn.reveal', () => {
             if (this.url.indexOf('#write_review') !== -1 && typeof window.history.replaceState === 'function') {

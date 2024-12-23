@@ -47,6 +47,17 @@ module.exports = {
                 },
             },
             {
+                test: /\.(png|jpe?g|gif|svg|bmp|tiff|webp|psd|ai|eps)$/i,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: 'assets/img/[name].[ext]',
+                        },
+                    },
+                ],
+            },
+            {
               test: /\.(scss|css)$/,
               use: ['style-loader', 'css-loader', 'sass-loader'],
             },
