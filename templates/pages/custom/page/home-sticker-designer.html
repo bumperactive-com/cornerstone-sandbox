@@ -27,6 +27,60 @@ blog:
 
 <div class="main full">
 
+    <div class="bumper-sticker-du-jour">
+        <div class="sticker-card">
+            <h2>{{lang 'custom.home_sticker_designer.heading'}}</h2>
+
+            <div class="sticker-container">
+                <div class="sticker-row">
+                    <div class="sticker">
+                        <img src="{{cdn 'img/home_example_image.png'}}" alt="My Other Car Is On Blocks In Your Mom’s Yard">
+                    </div>
+                    <div class="sticker-info">
+                        <p class="created-by">Created By:</p>
+                        <a href="">KylerTX</a>
+                        <br>
+                        <p class="created-by">Category:</p>
+                        <a href="">Humor</a>
+                        <br>
+                        <a href="/catalog" class="link">{{lang 'custom.home_sticker_designer.see_all_BSJDs'}}</a>
+                    </div>
+                </div>
+                <div class="sticker-date">
+                    <p>Thursday, Dec. 11, 2025</p>
+                </div>
+            </div>
+
+            <a href="/sticker-designer" class="button green">{{lang 'custom.home_sticker_designer.make_own_sticker'}}</a>
+            <a href="/view-all" class="link">{{lang 'custom.home_sticker_designer.view_all_print'}}</a>
+        </div>
+        <div class="search-section">
+            <p>{{lang 'custom.home_sticker_designer.seen_a_sticker'}}</p>
+            <input type="text" placeholder="Enter Sticker Text or Description...">
+            <a href="/catalog" class="link">{{lang 'custom.home_sticker_designer.view_full_catalog'}}</a>
+        </div>
+        <div class="about">
+            <h3>{{lang 'custom.home_sticker_designer.austins_finest_shop'}}</h3>
+                <div class="services">
+                    <a href="/order-stickers" class="service">
+                        <img src="{{cdn 'img/home_order_stickers.png'}}" alt="Order Custom Stickers Online">
+                    </a>
+                    <a href="/order-tshirts" class="service">
+                        <img src="{{cdn 'img/home_order_tees.png'}}" alt="Order Custom T-Shirts Online">
+                    </a>
+                    <a href="/all-services" class="service">
+                        <img src="{{cdn 'img/home_view_all_services.png'}}" alt="View All Print Services">
+                    </a>
+                </div>
+            <h3>{{lang 'custom.home_sticker_designer.online_community'}}</h3>
+                <div class="community">
+                    <a href="/catalog" class="button blue">{{lang 'custom.home_sticker_designer.view_full_catalog'}}</a>
+                    <a href="/sticker-designer" class="button green">{{lang 'custom.home_sticker_designer.make_a_sticker'}}</a>
+                    <a href="/previous-stickers" class="button red">{{lang 'custom.home_sticker_designer.previous_stickers'}}</a>
+                </div>
+        </div>
+    </div>
+
 </div>
 {{/partial}}
 {{> layout/base}}
