@@ -1048,6 +1048,13 @@
                 "my_designs": "My Designs",
                 "go_back_button": "Go Back to My Designs"
             }
+        },
+        "home_sticker_designer": {
+            "heading": "Bumper Sticker du jour!",
+            "created_by": "Created By",
+            "category": "Category",
+            "see_all_BSJDs": "See All BSJDs",
+            "make_own_sticker": "Make Your Own Bumperactive Sticker!"
         }
     }
 }
