@@ -1,10 +1,10 @@
 import SELECTORS from '../../product/widget-base-code/sticker-dom-selectors';
 
 export var hiddenElements = {
-    hiddenWidth: document.querySelectorAll('[data-product-attribute="input-number"]')[0].childNodes[3],
-    hiddenHeight: document.querySelectorAll('[data-product-attribute="input-number"]')[1].childNodes[3],
-    hiddenQuantity: document.querySelectorAll('[data-product-attribute="input-number"]')[2].childNodes[3],
-    hiddenResult: document.querySelectorAll('[data-product-attribute="input-number"]')[3].childNodes[3]
+    hiddenWidth: document.querySelectorAll('[data-product-attribute="input-number"]')[0]?.childNodes[3],
+    hiddenHeight: document.querySelectorAll('[data-product-attribute="input-number"]')[1]?.childNodes[3],
+    hiddenQuantity: document.querySelectorAll('[data-product-attribute="input-number"]')[2]?.childNodes[3],
+    hiddenResult: document.querySelectorAll('[data-product-attribute="input-number"]')[3]?.childNodes[3]
 }
 
 
