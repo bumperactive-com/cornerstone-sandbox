@@ -3,23 +3,9 @@
 // =============================================================================
 
 .productViewDesigner .productView-details {
-    float: none;
-    
-    @include breakpoint("medium") {
-        margin: auto;
-    }
-}
-
-.productView-image-section {
-    width: 100%; 
-    max-width: 600px; 
-    margin: 0 auto; 
-    margin-bottom: 20px; 
-}
-
-.productView-large-image {
     width: 100%;
-    height: auto;
-    display: block; 
-    object-fit: contain;
+}
+
+#productView-design-image-wrapper {
+    display: flex;
 }
