@@ -1,91 +1,97 @@
 .homepage__bumper-sticker {
-    font-family: Arial, sans-serif;
-    color: #333;
-    padding: 0px;
-    background-color: #fdfcdc;
+    font-family: $bumperSticker-font-family;
+    color: $text-color-primary;
+    background-color: $bumperSticker-bg-color;
     text-align: center;
+    padding: 0;
 }
 
 .bumper-sticker__card {
-    background-color: #fdfcdc;
-    padding: 20px;
-    margin: 20px auto;
+    background-color: $bumperSticker-bg-color;
+    padding: $bumperSticker-card-padding;
+    margin: $bumperSticker-card-margin;
     max-width: auto;
-    border-bottom: 4px solid #000000;
+    border-bottom: 4px solid $bumperSticker-border-color;
 }
 
 .bumper-sticker__heading {
-    margin-top: 0rem;
+    margin-top: 0;
     margin-bottom: 20px;
-    font-weight: bold;
+    font-weight: $bumperSticker-heading-font-weight;
 }
 
 .bumper-sticker__heading-italic {
-    font-style: italic;
+    font-style: $bumperSticker-heading-font-style;
 }
 
 .bumper-sticker__container {
-    background-color: #ffffff;
+    background-color: $bumperSticker-container-bg-color;
     display: flex;
     flex-direction: column;
-    border: 2px solid #000000;
-    border-radius: 10px;
+    border: 2px solid $bumperSticker-border-color;
+    border-radius: $bumperSticker-container-border-radius;
     overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: $box-shadow-primary;
     margin-bottom: 20px;
 }
 
 .bumper-sticker__row {
     display: flex;
     flex-direction: column;
+
+    @media (min-width: 768px) {
+        flex-direction: row;
+        padding: 30px;
+    }
 }
 
 .bumper-sticker__image {
-    flex: 0 0 100%;
-    padding: 20px;
-}
-
-.bumper-sticker__image img {
     width: 100%;
-    height: auto;
+
+    img {
+        width: 100%;
+        height: auto;
+    }
+
+    @media (min-width: 768px) {
+        width: 80%;
+    }
 }
 
 .bumper-sticker__info {
-    flex: 0 0 100%;
+    flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     text-align: left;
     font-size: 14px;
-    color: #333;
+    color: $text-color-primary;
     padding: 10px;
 }
 
 .bumper-sticker__label {
     font-size: 14px;
     font-weight: bold;
-    margin-bottom: 0px;
+    margin-bottom: 0;
 }
 
 .bumper-sticker__link {
     display: block;
     margin-bottom: 15px;
-    color: #007bff;
+    color: $text-color-link;
     text-decoration: none;
-}
 
-.bumper-sticker__link:hover {
-    text-decoration: underline;
+    &:hover {
+        text-decoration: underline;
+    }
 }
 
 .bumper-sticker__date {
-    background-color: black;
-    color: white;
+    background-color: $bumperSticker-date-bg-color;
+    color: $bumperSticker-date-text-color;
     text-align: center;
-    padding: 10px;
+    padding: $bumperSticker-date-padding;
     font-size: 14px;
     font-weight: bold;
-    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -95,154 +101,139 @@
     margin: 0;
 }
 
-@media (min-width: 768px) {
-    .bumper-sticker__row {
-        flex-direction: row; /* Side-by-side layout for desktop */
-    }
-
-    .bumper-sticker__image {
-        flex: 0 0 80%; /* Image takes 60% of the width */
-    }
-
-    .bumper-sticker__info {
-        flex: 0 0 20%; /* Info takes 40% of the width */
-        text-align: left;
-        padding: 20px;
-    }
-}
-
 .bumper-sticker__button {
     display: inline-block;
-    padding: 10px 20px;
-    text-decoration: none;
-    color: #fff;
-    margin: 10px 5px 20px;
-    border-radius: 12px;
-    border: 5px solid white;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    padding: $button-padding;
+    font-size: 16px;
+    font-weight: $button-font-weight;
+    color: $background-color-white;
+    border-radius: $button-border-radius;
+    border: 5px solid $button-border-color;
+    box-shadow: $box-shadow-primary;
     text-align: center;
-}
+    text-decoration: none;
+    margin-bottom: 1rem;
 
-.bumper-sticker__button--green {
-    background-color: #00B51B;
+    &--green {
+        background-color: $button-bg-color-green;
+    }
 }
 
 .homepage__search-section {
     margin: 30px 0;
-    border-bottom: 4px solid black;
+    border-bottom: 4px solid $border-color-dark;
+}
+
+.homepage__about {
+    padding-bottom: 3rem;
 }
 
 .search-section__row {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 4rem;
-    margin-top: 4rem;
-    width: 70%;
-    margin: auto;
+    margin: $search-section-row-margin;
+
+    @media (min-width: 768px) {
+        width: $search-section-width-desktop;
+    }
+
+    .form, .form-field, .quickSearchResults   {
+        margin: 0rem;
+    }
 }
-.search-section__row .form {
-    margin: 0rem;
-}
+
 .search-section__row .container {
     padding: 0rem;
     width: 60%;
-    display: flex;
-    flex-direction: column;
-}
-
-.search-section__row .form {
-    margin: 0rem;
-}
-
-.search-section__row .form-field {
-    margin: 0rem;
 }
 
 .search-section__label {
-    font-family: Arial, sans-serif;
-    color: #333;
-    font-size: 20px;
-    font-style: italic;
+    font-family: $font-family-primary;
+    color: $text-color-primary;
+    background-color: $background-color-light;
+    font-size: $search-section-label-font-size-mobile;
     font-weight: bold;
-    padding: 0px;
-    background-color: #fdfcdc;
+    font-style: italic;
     text-align: center;
     margin: 0;
     width: 40%;
+
+    @media (min-width: 768px) {
+        font-size: $search-section-label-font-size-desktop;
+    }
 }
 
 .search-section__link {
     display: block;
-    margin-top: 10px;
     margin-bottom: 30px;
-    color: #007bff;
+    margin-top: 10px;
+    color: $text-color-link;
     text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    }
 }
 
-.search-section__link:hover {
-    text-decoration: underline;
-}
+.about__community {
+    justify-content: center;
+    display: flex;
 
-.homepage__about {
-    margin-top: 20px;
-    padding-bottom: 20px;
+    @media screen and (max-width: 800px) {
+        flex-direction: column;
+        align-items: center;
+    }
 }
 
 .about__heading, .about__community-heading {
     margin: auto;
-    max-width: 430px;
-    font-size: 18px;
+    max-width: $about-heading-max-width;
+    font-size: $about-heading-font-size;
     font-weight: bold;
     text-align: center;
     margin-bottom: 20px;
     margin-top: 30px;
 }
 
-.about__services, .about__community {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    flex-wrap: wrap;
-}
-
 .services__item {
     text-decoration: none;
-    color: #333;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    width: 150px;
+    color: $text-color-primary;
+    background-color: $background-color-white;
+    border: 1px solid $services-item-border-color;
+    border-radius: $services-item-border-radius;
+    width: $services-item-width;
     text-align: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: $services-item-box-shadow;
 }
 
 .community__button {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 200px;
-    padding: 12px 18px;
+    width: $community-button-width;
+    padding: $community-button-padding;
     margin: 10px 5px;
-    font-size: 16px;
+    font-size: $community-button-font-size;
     text-align: center;
-    line-height: 1.5;
+    line-height: $community-button-line-height;
     white-space: pre-wrap;
     text-decoration: none;
-    color: #fff;
-    border: 5px solid white;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    border-radius: 12px;
-}
+    color: $background-color-white;
+    border: 5px solid $community-button-border-color;
+    box-shadow: $community-button-box-shadow;
+    border-radius: $community-button-border-radius;
+    font-weight: $button-font-weight;
 
-.community__button--blue {
-    background-color: #00afb9;
-}
+    &--blue {
+        background-color: $community-button-bg-color-blue;
+    }
 
-.community__button--red {
-    background-color: #ff6161;
-}
+    &--red {
+        background-color: $community-button-bg-color-red;
+    }
 
-.community__button--green {
-    background-color: #00B51B;
+    &--green {
+        background-color: $community-button-bg-color-green;
+    }
 }
