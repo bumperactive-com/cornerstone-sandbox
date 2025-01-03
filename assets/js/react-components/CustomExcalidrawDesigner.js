@@ -22,22 +22,15 @@ export default function CustomExcalidrawDesigner() {
 
   const reviewDesign = async () => {
     const api = excalidrawRef.current;
-
     if (!api) return;
-
-    const curStickerSvg = await api.exportSticker();
-
-    const stickerStr = new XMLSerializer().serializeToString(curStickerSvg);
-    const stickerEncoded = 'data:image/svg+xml;base64,' + window.btoa(stickerStr);
-
-    localStorage.setItem('excalidrawImg', stickerEncoded);
-
-    const designerReviewEvent = new CustomEvent(
-      'openDesignerReviewModal',
-      { detail: stickerEncoded }
+    
+    const excalidrawSvg = await api.exportSticker();
+    const reviewDesignEvent = new CustomEvent(
+      'reviewDesign',
+      { detail: excalidrawSvg }
     );
 
-    window.dispatchEvent(designerReviewEvent);
+    window.dispatchEvent(reviewDesignEvent);
   }
 
   return (
