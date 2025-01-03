@@ -56,6 +56,9 @@ blog:
         </div>
         <div class="search-section">
             <p>{{lang 'custom.home_sticker_designer.seen_a_sticker'}}</p>
+           
+            {{> components/common/quick-search name='nav-menu-quick-search' custom_placeholder="Enter Sticker Text or Description..."}}
+        
             <input type="text" placeholder="Enter Sticker Text or Description...">
             <a href="/catalog" class="link">{{lang 'custom.home_sticker_designer.view_full_catalog'}}</a>
         </div>
