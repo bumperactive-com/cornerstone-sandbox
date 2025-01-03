@@ -114,6 +114,10 @@
     text-decoration: none;
     margin-bottom: 1rem;
 
+    &:hover {
+        color: $background-color-white;
+    }
+
     &--green {
         background-color: $button-bg-color-green;
     }
@@ -224,6 +228,10 @@
     box-shadow: $community-button-box-shadow;
     border-radius: $community-button-border-radius;
     font-weight: $button-font-weight;
+
+    &:hover {
+        color: $background-color-white;
+    }
 
     &--blue {
         background-color: $community-button-bg-color-blue;
