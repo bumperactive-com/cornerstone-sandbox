@@ -26,64 +26,63 @@ blog:
     {{/each}}
 
 <div class="main full">
+    <div class="homepage__bumper-sticker">
+        <div class="bumper-sticker__card">
+            <h2 class="bumper-sticker__heading">
+                {{lang 'custom.home_sticker_designer.heading_part1'}} 
+                <span class="bumper-sticker__heading-italic">{{lang 'custom.home_sticker_designer.heading_part2'}}</span>
+            </h2>
 
-    <div class="bumper-sticker-du-jour">
-        <div class="sticker-card">
-            <h2>{{lang 'custom.home_sticker_designer.heading'}}</h2>
-
-            <div class="sticker-container">
-                <div class="sticker-row">
-                    <div class="sticker">
+            <div class="bumper-sticker__container">
+                <div class="bumper-sticker__row">
+                    <div class="bumper-sticker__image">
                         <img src="{{cdn 'img/home_example_image.png'}}" alt="My Other Car Is On Blocks In Your Mom’s Yard">
                     </div>
-                    <div class="sticker-info">
-                        <p class="created-by">{{lang 'custom.home_sticker_designer.created_by'}}</p>
-                        <a href="">KylerTX</a>
-                        <br>
-                        <p class="created-by">{{lang 'custom.home_sticker_designer.category'}}</p>
-                        <a href="">Humor</a>
-                        <br>
-                        <a href="" class="link">{{lang 'custom.home_sticker_designer.see_all_BSJDs'}}</a>
+                    <div class="bumper-sticker__info">
+                        <p class="bumper-sticker__label">{{lang 'custom.home_sticker_designer.created_by'}}</p>
+                        <a href="" class="bumper-sticker__link">PLACEHOLDER: KylerTX</a>
+                        <p class="bumper-sticker__label">{{lang 'custom.home_sticker_designer.category'}}</p>
+                        <a href="" class="bumper-sticker__link">PLACEHOLDER: Humor</a>
+                        <a href="" class="bumper-sticker__cta">{{lang 'custom.home_sticker_designer.see_all_BSJDs'}}</a>
                     </div>
                 </div>
-                <div class="sticker-date">
-                    <p>Thursday, Dec. 11, 2025</p>
+                <div class="bumper-sticker__date">
+                    <p class="">PLACEHOLDER: Thursday, Dec. 11, 2025</p>
                 </div>
             </div>
 
-            <a href="" class="button green">{{lang 'custom.home_sticker_designer.make_own_sticker'}}</a>
-            <a href="" class="link">{{lang 'custom.home_sticker_designer.view_all_print'}}</a>
+            <a href="" class="bumper-sticker__button bumper-sticker__button--green">{{lang 'custom.home_sticker_designer.make_own_sticker'}}</a>
+            <a href="" class="bumper-sticker__link">{{lang 'custom.home_sticker_designer.view_all_print'}}</a>
         </div>
-        <div class="search-section">
-            <p>{{lang 'custom.home_sticker_designer.seen_a_sticker'}}</p>
-           
-            {{> components/common/quick-search name='nav-menu-quick-search' custom_placeholder="Enter Sticker Text or Description..."}}
-        
-            <input type="text" placeholder="Enter Sticker Text or Description...">
-            <a href="/catalog" class="link">{{lang 'custom.home_sticker_designer.view_full_catalog'}}</a>
+
+        <div class="homepage__search-section">
+            <div class="search-section__row">
+                <p class="search-section__label">{{lang 'custom.home_sticker_designer.seen_a_sticker'}}</p>     
+                {{> components/common/quick-search name='nav-menu-quick-search' custom_placeholder="Enter Sticker Text or Description..."}}
+            </div>
+            <a href="" class="search-section__link">{{lang 'custom.home_sticker_designer.view_full_catalog'}}</a>
         </div>
-        <div class="about">
-            <h3>{{lang 'custom.home_sticker_designer.austins_finest_shop'}}</h3>
-                <div class="services">
-                    <a href="" class="service">
-                        <img src="{{cdn 'img/home_order_stickers.png'}}" alt="Order Custom Stickers Online">
-                    </a>
-                    <a href="" class="service">
-                        <img src="{{cdn 'img/home_order_tees.png'}}" alt="Order Custom T-Shirts Online">
-                    </a>
-                    <a href="" class="service">
-                        <img src="{{cdn 'img/home_view_all_services.png'}}" alt="View All Print Services">
-                    </a>
-                </div>
-            <h3>{{lang 'custom.home_sticker_designer.online_community'}}</h3>
-                <div class="community">
-                    <a href="" class="button blue">{{lang 'custom.home_sticker_designer.view_full_catalog'}}</a>
-                    <a href="" class="button green">{{lang 'custom.home_sticker_designer.make_a_sticker'}}</a>
-                    <a href="" class="button red">{{lang 'custom.home_sticker_designer.previous_stickers'}}</a>
-                </div>
+
+        <div class="homepage__about">
+            <h3 class="about__heading">{{lang 'custom.home_sticker_designer.austins_finest_shop'}}</h3>
+            <div class="about__services">
+                <a href="" class="services__item">
+                    <img src="{{cdn 'img/home_order_stickers.png'}}" alt="Order Custom Stickers Online">
+                </a>
+                <a href="" class="services__item">
+                    <img src="{{cdn 'img/home_order_tees.png'}}" alt="Order Custom T-Shirts Online">
+                </a>
+                <a href="" class="services__item">
+                    <img src="{{cdn 'img/home_view_all_services.png'}}" alt="View All Print Services">
+                </a>
+            </div>
+            <h3 class="about__community-heading">{{lang 'custom.home_sticker_designer.online_community'}}</h3>
+            <div class="about__community">
+                <a href="" class="community__button community__button--blue">{{lang 'custom.home_sticker_designer.view_full_catalog'}}</a>
+                <a href="" class="community__button community__button--green">{{lang 'custom.home_sticker_designer.make_a_sticker'}}</a>
+                <a href="" class="community__button community__button--red">{{lang 'custom.home_sticker_designer.previous_stickers'}}</a>
+            </div>
         </div>
     </div>
-
-</div>
 {{/partial}}
 {{> layout/base}}

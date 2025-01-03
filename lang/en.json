@@ -1050,7 +1050,8 @@
             }
         },
         "home_sticker_designer": {
-            "heading": "Bumper Sticker du jour!",
+            "heading_part1": "Bumper Sticker",
+            "heading_part2": "du jour!",
             "created_by": "Created By:",
             "category": "Category:",
             "see_all_BSJDs": "See All BSJDs",
