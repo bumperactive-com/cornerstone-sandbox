@@ -1051,8 +1051,8 @@
         },
         "home_sticker_designer": {
             "heading": "Bumper Sticker du jour!",
-            "created_by": "Created By",
-            "category": "Category",
+            "created_by": "Created By:",
+            "category": "Category:",
             "see_all_BSJDs": "See All BSJDs",
             "make_own_sticker": "Make Your Own Bumperactive Sticker!",
             "view_all_print": "View All Print Services",
