@@ -1048,6 +1048,21 @@
                 "my_designs": "My Designs",
                 "go_back_button": "Go Back to My Designs"
             }
+        },
+        "home_sticker_designer": {
+            "heading_part1": "Bumper Sticker",
+            "heading_part2": "du jour!",
+            "created_by": "Created By:",
+            "category": "Category:",
+            "see_all_BSJDs": "See All BSJDs",
+            "make_own_sticker": "Make Your Own Bumperactive Sticker!",
+            "view_all_print": "View All Print Services",
+            "seen_a_sticker": "Seen a Sticker on the Road?",
+            "view_full_catalog": "View The Full Catalog",
+            "austins_finest_shop": "We're Austin's Finest and Scrapiest Printing and E-commerce Fulfillment Shop",
+            "online_community": "We're also Home To a Vibrant Community United By Bumper Stickers:",
+            "make_a_sticker": "Make a Bumperactive Sticker",
+            "previous_stickers": "Previous Bumper Stickers Of The Day"
         }
     }
 }

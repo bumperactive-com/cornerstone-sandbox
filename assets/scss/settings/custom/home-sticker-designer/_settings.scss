@@ -1,0 +1,62 @@
+
+// General Variables
+$font-family-primary: "Montserrat", Arial, Helvetica, sans-serif;
+$text-color-primary: #333;
+$text-color-link: #007bff;
+$background-color-light: #fdfcdc;
+$background-color-white: #fff;
+$border-color-dark: #000;
+$box-shadow-primary: 0 4px 6px rgba(0, 0, 0, 0.2);
+$border-radius-primary: 12px;
+
+// Bumper Sticker Section Variables
+$bumperSticker-font-family: $font-family-primary;
+$bumperSticker-heading-font-weight: bold;
+$bumperSticker-heading-font-style: italic;
+$bumperSticker-bg-color: $background-color-light;
+$bumperSticker-border-color: $border-color-dark;
+$bumperSticker-card-padding: 20px;
+$bumperSticker-card-margin: 20px auto;
+$bumperSticker-container-bg-color: $background-color-white;
+$bumperSticker-container-border-radius: 10px;
+
+// Date Variables
+$bumperSticker-date-bg-color: #000;
+$bumperSticker-date-text-color: #fff;
+$bumperSticker-date-padding: 10px;
+
+// Button Variables
+$button-border-radius: 12px;
+$button-font-weight: bold;
+$button-padding: 10px 20px;
+$button-border-color: $background-color-white;
+$button-bg-color-green: #00B51B;
+$button-bg-color-blue: #00afb9;
+$button-bg-color-red: #ff6161;
+
+// Search Section Variables
+$search-section-row-margin: 0rem auto;
+$search-section-width-desktop: 80%;
+$search-section-label-font-size-mobile: 12px;
+$search-section-label-font-size-desktop: 20px;
+
+// About Section Variables
+$about-heading-max-width: 430px;
+$about-heading-font-size: 18px;
+$services-item-width: 150px;
+$services-item-border-radius: 5px;
+$services-item-border-color: #ddd;
+$services-item-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+// Community Button Variables
+$community-button-width: 200px;
+$community-button-line-height: 1.5;
+$community-button-padding: 12px 18px;
+$community-button-font-size: 16px;
+$community-button-border-radius: $border-radius-primary;
+$community-button-box-shadow: $box-shadow-primary;
+$community-button-bg-color-blue: #00afb9;
+$community-button-bg-color-red: #ff6161;
+$community-button-bg-color-green: #00b51b;
+$community-button-border-color: $background-color-white;
+
